@@ -11,7 +11,9 @@ categories: git
 **安装**
 + 百度 git 然后下载安装
 
-**配置**(一次性配置,以后使用不用再管)设置`username`和`email`，因为github每次`commit`都会记录他们
+**配置**
+    
+一次性配置,设置`username`和`email`，因为github每次`commit`都会记录他们
 
 + $ git config --global user.name "自定义名字" (注册时填写的名字)
 + $ git config --global user.email "email@地址.com"(注册的地址)

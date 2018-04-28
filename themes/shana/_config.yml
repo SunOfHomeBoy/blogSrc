@@ -1,0 +1,91 @@
+# Header
+menu:
+  Home: /
+  Archives: /archives
+  Categories: /categories
+  Tags: /tags
+rss: /atom.xml
+
+# Content
+excerpt_link: Read More
+fancybox: true
+
+# Sidebar
+sidebar: left
+widgets:
+- nav
+- about
+
+# display widgets at the bottom of index pages (pagination == 2)
+index_widgets:
+- category
+- tagcloud
+- archive
+
+# widget behavior
+archive_type: 'monthly'
+show_count: false
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.png
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:
+
+
+# GalMenu - PC端右键调出，移动端长按
+# galmenu决定是否开启
+# mp3play决定是否开启音效
+galmenu: true
+mp3play: false
+gaymenu_item:
+- name: 首页
+  url : /
+- name: 标签
+  url : /tags
+- name: 分类
+  url : /categories
+- name: 归档
+  url : /archives
+# - name: xxx
+#   url : xxxxxxxxx   拓展Extension
+# - name: xxxx
+#   url : xxxxxxx
+
+# 社交链接
+social:
+- url: https://github.com/SunOfHomeBoy
+  name: Github
+
+# 友情链接
+# name : url
+link_title: 友情链接
+links:
+  Sina: http://weibo.com/1691891903/profile?topnav=1&wvr=6
+
+
+# Sidebar Avatar
+# in theme directory(source/images): /images/avatar.jpg
+# in site  directory(source/uploads): /uploads/avatar.jpg
+# 头像
+avatar: http://a0.att.hudong.com/33/92/18300542770729141084923840634_s.jpg
+
+
+# 网站统计
+# 站长统计 填写id
+# eg:　
+# CNZZ: 123456789
+CNZZ: 
+
+# 评论
+# 友言uid
+uyan: 
+
+# leadcloud访问次数统计
+# 
+leancloud_visitors:
+  enable: true
+  app_id: true
+  app_key: true

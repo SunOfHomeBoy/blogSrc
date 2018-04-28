@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>React-入门 | 我的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="入门   一个核心思想——组件化  两位带头大哥——react &amp;amp; react-dom  一个基本运作方式——数据驱动视图  一位神秘卧底——jsx语法  三位护法——state（状态）、props（属性）、refs（实例）  一群打杂小弟——生命周期 create-React-app是一个全局的命令行工具用来创建一个新的项目react-scripts是一个生成的项目所需要的开发依赖一般我">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-入门">
+<meta property="og:url" content="http://SunOfHomeBoy.github.io/2017/09/11/React-01/index.html">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="入门   一个核心思想——组件化  两位带头大哥——react &amp;amp; react-dom  一个基本运作方式——数据驱动视图  一位神秘卧底——jsx语法  三位护法——state（状态）、props（属性）、refs（实例）  一群打杂小弟——生命周期 create-React-app是一个全局的命令行工具用来创建一个新的项目react-scripts是一个生成的项目所需要的开发依赖一般我">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="http://sunofhomeboy.github.io/2017/09/11/React-01/%7Blogo%7D">
+<meta property="og:updated_time" content="2017-09-16T15:18:51.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React-入门">
+<meta name="twitter:description" content="入门   一个核心思想——组件化  两位带头大哥——react &amp;amp; react-dom  一个基本运作方式——数据驱动视图  一位神秘卧底——jsx语法  三位护法——state（状态）、props（属性）、refs（实例）  一群打杂小弟——生命周期 create-React-app是一个全局的命令行工具用来创建一个新的项目react-scripts是一个生成的项目所需要的开发依赖一般我">
+<meta name="twitter:image" content="http://sunofhomeboy.github.io/2017/09/11/React-01/%7Blogo%7D">
+  
+    <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://a0.att.hudong.com/33/92/18300542770729141084923840634_s.jpg">
+    <h2 class="author">李仕臣</h2>
+    <h3 class="description">李仕臣的博客</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>3</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>1</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-React-01" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/11/React-01/" class="article-date">
+  <time class="post-time" datetime="2017-09-11T07:21:11.000Z" itemprop="datePublished">
+    <span class="post-month">9月</span><br/>
+    <span class="post-day">11</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React-入门
+    </h1>
+  
+
+        <div>
+          
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2017/09/11/React-01/" class="leancloud_visitors" data-flag-title="React-入门">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><h2>入门</h2><p></p>
+<p><ol><br>  <li>一个核心思想——组件化</li><br>  <li>两位带头大哥——react &amp; react-dom</li><br>  <li>一个基本运作方式——数据驱动视图</li><br>  <li>一位神秘卧底——jsx语法</li><br>  <li>三位护法——state（状态）、props（属性）、refs（实例）</li><br>  <li>一群打杂小弟——生命周期</li><br></ol></p>
+<p><br>create-React-app是一个全局的命令行工具用来创建一个新的项目<br>react-scripts是一个生成的项目所需要的开发依赖<br></p><br><p><br>一般我们开始创建react应用程序的时候，要自己通过npm或者安装项目的全部依赖，再写webpack.config.js，一系列复杂的配置，搭建好开发环境后写src源代码<br></p><br><p><br>现在如果你正在搭建react运行环境，使用create-react-app去自动构建你的程序。你的项目所在的文件夹下是没有配置文件的。react-scripts是唯一的额外的构造依赖<br></p><br><p><br>在你的package.json中，你的运行环境将有每一个你需要用来构建一个现代应用程序所需要的依赖，在配置文件中编写的配置代码，React脚本都帮你写了，比如：react-scripts帮你自动下载需要的webpack-dev-server依赖，然后react脚本自己写了一个nodejs服务端的脚本代码start.js来实例化.<br></p><br><p><br>WebpackDevServer，并且运行启动了一个使用express的Http服务器，现在你只需要专心写SRC源代码就可以了。省去了很多精力，最适合快速上手一个演示了。<br></p><br><h5>React-scripts有以下支持，都帮你配置好了：</h5><br><p>React，JSX，ES6和Flow语法支持。</p><br><p>ES6之外的语言扩展像对象扩展运算符。</p><br><p>直接从JavaScript导入CSS和图像文件。</p><br><p>自动翻译CSS，所以你不需要-webkit或其他前缀。</p><br><p>一个构建脚本来捆绑JS，CSS，和图像进行生产，具有源代码图。</p>
+
+<p></p><h3>示例:</h3><p></p>
+<p><div>index:</div><br>    // 1.引入两位带头大哥 react和react-dom<br>    import React from ‘react’<br>    import ReactDom from ‘react-dom’<br>    // 引入App组件<br>    import App from ‘./App’<br>    import logo from ‘./logo.svg’<br>    // ReactDom负责控制页面的内容 但是使用ReactDom 必须依赖React<br>    // 第一个参数 是渲染的元素(必须是闭合标签)  第二个参数是渲染的位置<br>    ReactDom.render(<br>      <div><br>        <h1>今天学习了react</h1><br>        <h2>这是一个h2标签</h2><br>        <img src="{logo}" alt=""><br>        <app><br>      </app></div>,<br>      document.getElementById(‘root’)<br>    )<br>    // jsx ==== javascript +xml  神秘的卧底<br>    // 可以在js语言中 插入 xml(html)语言  语法糖  每一个XML标签都会被JSX转换工具转换成纯Javascript代码</p>
+<p><div>app:</div><br>    import React,{Component} from ‘react’<br>    import ‘./App.css’<br>    class App extends Component{<br>      constructor(){<br>        super()<br>        console.log(this)<br>        this.state = {<br>          name:’焦洋’,<br>          time:(new Date()).toLocaleTimeString()<br>        }<br>        setInterval(()=&gt;{<br>          // 在react中 修改state  不能直接修改 必须通过调用this.setState()<br>          // 修改我们的时间<br>          // console.log(this);<br>          this.setState({<br>            time:(new Date()).toLocaleTimeString()<br>          })<br>        },1000)<br>      }<br>      say(){<br>        return ‘say Hello’<br>      }</p>
+<pre><code>  // 引入一个打杂的小弟  生命周期 方法
+  render(){
+    // var s = &apos;abc&apos;
+    // {} 插值 插槽  &lt;%= %&gt; 插值即可以插变量 也可以插函数
+    return (
+      &lt;ul&gt;
+        &lt;li&gt;1&lt;/li&gt;
+        &lt;li className=&apos;li2&apos;&gt;{3&gt;4 ? &apos;真的&apos; : &apos;假的&apos;}&lt;/li&gt;
+        &lt;li&gt;{this.say()}&lt;/li&gt;
+        &lt;li&gt;{111}&lt;/li&gt;
+        &lt;li&gt;{this.state.name}&lt;/li&gt;
+        &lt;li&gt;{this.state.time}&lt;/li&gt;
+      &lt;/ul&gt;
+      )
+  }
+}
+//抛出 App
+export default App;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2017/09/11/React-01/" data-id="cj7ngmli70000xorji1wtu4om" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/12/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">我的博客</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="http://a0.att.hudong.com/33/92/18300542770729141084923840634_s.jpg">
+    <h2 class="author">李仕臣</h2>
+    <h3 class="description">李仕臣的博客</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>3</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>1</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://github.com/SunOfHomeBoy" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="http://weibo.com/1691891903/profile?topnav=1&amp;wvr=6" target="_blank" title="ShanaMaid">
+          ShanaMaid
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2016 - 2017 李仕臣<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.article-title').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+  </div>
+</body>
+</html>

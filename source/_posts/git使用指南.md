@@ -82,6 +82,7 @@ categories: git
 **git 删除远程分支**
 + git push origin :br  (origin 后面有空格)
 + git push origin 【空格】【冒号】【你的分支名字】
++ git push 【你的远程仓库在本地的别名】【空格】【冒号】【你的分支名字】
 
 **git代码库回滚** (指将代码库某分支退回到以前的某个"commit id")
 本地代码库回滚

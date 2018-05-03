@@ -41,9 +41,9 @@
     <h2 class="author">李仕臣</h2>
     <h3 class="description">李仕臣的博客</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>12</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
       <a href="/categories"><div><strong>8</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>9</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>12</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -68,6 +68,336 @@
 </div>
 
         <section id="main">
+  
+    <article id="post-数据库范式介绍" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/02/数据库范式介绍/" class="article-date">
+  <time class="post-time" datetime="2018-05-02T05:50:37.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br/>
+    <span class="post-day">02</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/02/数据库范式介绍/">数据库范式介绍</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/05/02/数据库范式介绍/" class="leancloud_visitors" data-flag-title="数据库范式介绍">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据库范式介绍"><a href="#数据库范式介绍" class="headerlink" title="数据库范式介绍"></a><a href="http://josh-persistence.iteye.com/blog/2200644" target="_blank" rel="noopener">数据库范式介绍</a></h1><h2 id="一、基本介绍"><a href="#一、基本介绍" class="headerlink" title="一、基本介绍"></a>一、基本介绍</h2><p>设计<code>关系数据库</code>时,遵从不同的规范要求,设计出合理的关系型数据库,这些不同的<code>规范</code>要求被称为不同的<code>范式</code>,各种范式<code>呈 递次规范</code>,越<code>高</code>的 范式 数据库<code>冗余越小</code>。</p>
+<p>目前关系数据库有<code>六种</code>范式:第一范式(1NF)、第二范式(2NF)、第三范式(3NF)、巴斯-科德范式(BCNF)、第四范式(4NF)和第五范式(5NF,又称完美范式)。满足最低要求的范式是第一范式(1NF)。在第一范式的基础上进一步满足更多规范要求的称为第二范式(2NF),其余范式以次类推。一般说来,数据库<code>只需满足第三范式(3NF)就行</code>了。</p>
+<p>范式的<code>包含关系</code>。一个数据库设计如果符合第二范式,一定也符合第一范式。如果符合第三范式,一定也符合第二范式…</p>
+<h3 id="数据库基本概念"><a href="#数据库基本概念" class="headerlink" title="数据库基本概念"></a><strong>数据库基本概念</strong></h3><p> 要理解范式,首先必须对知道什么是<code>关系数据库</code>,简单的说:关系数据库就是用<code>二维表</code>来保存数据。表和表之间可以……(省略10W字),如果对数据库很熟悉,可以不用理会下面的概念。</p>
+<p><strong>实体</strong>: 现实世界中客观存在并可以被区别的事物。比如“一个学生”、“一本书”、“一门课”等等。值得强调的是这里所说的“事物”不仅仅是看得见摸得着的“东西”，它也可以是虚拟的，不如说“老师与学校的关系”。</p>
+<p><strong>属性</strong>: 教科书上解释为:“<code>实体所具有的某一特性</code>”，由此可见，属性一开始是个<code>逻辑概念</code>，比如说，“性别”是“人”的一个属性。在<code>关系数据库</code>中，属性又是个<code>物理概念</code>，属性可以看作是“<code>表的一列</code>”。</p>
+<p><strong>元组</strong>：表中的一行就是一个元组。</p>
+<p><strong>分量</strong>：<code>元组</code>的某个 <code>属性值</code>。在一个关系数据库中，它是一个<code>操作原子</code>，即关系数据库在做任何操作的时候，属性是“不可分的”。否则就不是关系数据库了。</p>
+<p><strong>码(键)</strong>：表中可以唯一确定一个元组的某个 属性(或者属性组)，如果这样的码有不止一个，那么大家都叫 <code>候选码</code>，我们从候选码中挑一个出来做老大，它就叫<code>主码(主键)</code>。</p>
+<p><strong>全码</strong>：如果一个码包含了所有的属性，这个码就是全码。</p>
+<p><strong>主属性</strong>：一个属性只要在任何一个候选码中出现过，这个属性就是主属性。</p>
+<p><strong>非主属性</strong>：与上面相反，没有在任何候选码中出现过，这个属性就是非主属性。</p>
+<p><strong>外码</strong>：一个属性(或属性组)，它不是码，但是它别的表的码，它就是外码。</p>
+<p><strong>候选码</strong>： 若关系中的某一属性或属性组的值能唯一的标识一个元组，而其任何真子集都不能再标识，则称该属性组为(超级码)候选码。</p>
+<h4 id="数据库，部分函数依赖，传递函数依赖，完全函数依赖，三种范式的区别"><a href="#数据库，部分函数依赖，传递函数依赖，完全函数依赖，三种范式的区别" class="headerlink" title="数据库，部分函数依赖，传递函数依赖，完全函数依赖，三种范式的区别"></a><a href="https://blog.csdn.net/rl529014/article/details/48391465" target="_blank" rel="noopener">数据库，部分函数依赖，传递函数依赖，完全函数依赖，三种范式的区别</a></h4><p><strong>函数依赖</strong>: 设X,Y是关系R的两个属性集合,存在X→Y;则称Y 函数依赖于X。</p>
+<p><strong>部分函数依赖</strong>：设X,Y是关系R的两个属性集合，存在X→Y; 若X’是X的<code>真子集</code>，存在X’→Y，则称Y 部分函数依赖于X。</p>
+<p><strong>完全函数依赖</strong>：设X,Y是关系R的两个属性集合，X’是X的真子集，存在X→Y; X’是X的<code>真子集</code>，但对每一个X’都有X’!→Y，则称Y完全函数依赖于X。(个人理解为 只能通过 X确定 Y，并且每个X’ 都不能确定Y 的关系 就是完全函数依赖)</p>
+<p><strong>传递函数依赖</strong>：设X,Y,Z是关系R中互不相同的属性集合，存在X→Y(Y !→X),Y→Z(Z !→Y)，则称Z传递函数依赖于X。</p>
+<p>假如 Z 函数依赖于 Y，且 Y 函数依赖于 X （『Y 不包含于 X，且 X 不函数依赖于 Y』这个前提），那么我们就称 Z 传递函数依赖于 X ，记作 X T→ Z，如图3。</p>
+<h2 id="二、6种范式"><a href="#二、6种范式" class="headerlink" title="二、6种范式"></a>二、6种范式</h2><p>前面说到，<code>范式越高</code>，数据的<code>冗余</code>度<code>越小</code>。其实<code>没有冗余</code>的数据库设计是<code>可以做到</code>的。但是，<code>没有冗余</code>的数据库<code>未必是最好的</code>数据库，有时为了提高运行效率，就必须降低范式标准，适当保留冗余数据。具体做法是：在概念数据模型设计时遵守第三范式，降低范式标准的工作放到物理数据模型设计时考虑。降低范式就是增加字段，允许冗余。(最典型的就是在一些数据表中不仅存作为外键的user_id,同样存user_name,这样虽然违反数据库范式增加了user_name字段，但是却提高了效率，减少了获取user_id后再去user表中获取user name的操作)</p>
+<p>所以实际中，我们只需要考虑数据库满足第三范式就可以了,下面以最通俗的方式来解释数据库的范式。</p>
+<p><strong>第一范式(1NF)：属性不可分</strong></p>
+<p>(1NF是对属性的原子性约束，要求属性具有原子性，不可再分解)</p>
+<p>不满足第一范式的数据库，不是关系数据库！</p>
+<p><strong>第二范式（2NF）：符合1NF，并且非主属性完全依赖于码。</strong></p>
+<p>第二范式要求非主属性依赖于主关键字。</p>
+<p>（2NF是对记录的惟一性约束，要求记录有惟一标识，即实体的惟一性，更通俗说有主键ID）</p>
+<p><strong>第三范式（3NF）：符合2NF，并且，消除传递依赖。</strong><br>（3NF是对字段冗余性的约束，即任何字段不能由其他字段派生出来，它要求字段没有冗余）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/05/02/数据库范式介绍/" data-id="cjgoou0rf000svkxjvxb2uaw5" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL范式/">SQL范式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-linux 删除" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/28/linux 删除/" class="article-date">
+  <time class="post-time" datetime="2018-04-28T08:32:00.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br/>
+    <span class="post-day">28</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/28/linux 删除/">Linux 删除文件夹和文件的命令</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/04/28/linux 删除/" class="leancloud_visitors" data-flag-title="Linux 删除文件夹和文件的命令">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux-删除文件夹和文件的命令"><a href="#Linux-删除文件夹和文件的命令" class="headerlink" title="Linux 删除文件夹和文件的命令"></a>Linux 删除文件夹和文件的命令</h1><ul>
+<li>-r 就是向下递归，不管有多少级目录，一并删除</li>
+<li>-f 就是直接强行删除，不作任何提示的意思</li>
+</ul>
+<h2 id="删除文件夹实例："><a href="#删除文件夹实例：" class="headerlink" title="删除文件夹实例："></a>删除文件夹实例：</h2><pre><code>rm -rf /var/log/httpd/access
+</code></pre><p>将会删除<code>/var/log/httpd/access</code>目录以及其下所有文件、文件夹</p>
+<h2 id="删除文件使用实例："><a href="#删除文件使用实例：" class="headerlink" title="删除文件使用实例："></a>删除文件使用实例：</h2><pre><code>rm -f /var/log/httpd/access.log
+</code></pre><p>将会强制删除<code>/var/log/httpd/access.log</code>这个文件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/linux 删除/" data-id="cjgoou0qu000ivkxjarw7iogy" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-删除命令/">Linux 删除命令</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-git-删除远程文件-目录" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/28/git-删除远程文件-目录/" class="article-date">
+  <time class="post-time" datetime="2018-04-28T08:27:48.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br/>
+    <span class="post-day">28</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/28/git-删除远程文件-目录/">git 删除远程文件/目录</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/04/28/git-删除远程文件-目录/" class="leancloud_visitors" data-flag-title="git 删除远程文件/目录">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git删除远程仓库的文件或目录"><a href="#git删除远程仓库的文件或目录" class="headerlink" title="git删除远程仓库的文件或目录"></a>git删除远程仓库的文件或目录</h1><p>删除a目录下的2.txt文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached a/2.txt</span><br></pre></td></tr></table></figure></p>
+<p>删除a目录</p>
+<pre><code>git rm -r --cached a
+
+git commit -m &quot;删除a目录下的2.txt文件&quot; 
+git push
+</code></pre><p><strong>Note:</strong></p>
+<p>用<code>-r</code>参数删除目录, <code>git rm --cached a.txt</code> 删除的是本地仓库中的文件，且<code>本地工作区</code>的文件会<code>保留</code>且<code>不再与远程仓库发生跟踪关系</code>，如果本地仓库中的文件也要删除则用<code>git rm a.txt</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/git-删除远程文件-目录/" data-id="cjgoou0ql000bvkxjfpk3pria" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-删除/">git 删除</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-git-操作规范" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/28/git-操作规范/" class="article-date">
+  <time class="post-time" datetime="2018-04-28T07:25:23.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br/>
+    <span class="post-day">28</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/28/git-操作规范/">git 操作规范</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/04/28/git-操作规范/" class="leancloud_visitors" data-flag-title="git 操作规范">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、-创建与合并分支"><a href="#一、-创建与合并分支" class="headerlink" title="一、 创建与合并分支"></a>一、 创建与合并分支</h2><ol>
+<li>从master分支创建dev分支并切换到dev分支<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master    </span><br><span class="line">git checkout -b dev</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p><code>git checkout -b dev</code> 等价于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch dev    </span><br><span class="line">git checkout dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看<code>本地当前分支</code>，分支前面带<code>&quot;*&quot;</code>表示当前分支，剩下的分支表示本地有的分支：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看<code>远程全部分支</code>，白色的表示本地有的，红色的表示本地没有，仅在远程存在：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><p>修改代码、提交代码(当前的操作是在dev分支上进行)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add a.html</span><br><span class="line">git commit -m &quot;提交文件a.html&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分支合并(将dev合并到master)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master     </span><br><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并完成后，删除dev分支.(删除dev分支时，注意我们当前所在的分支不能是dev分支)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除后，查看分支(此时看不到dev分支了)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>总结 ：工作中经常从<code>master</code>创建新分支，具体操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git checkout master   </span><br><span class="line">git checkout -b  issues1234   </span><br><span class="line">git push origin issues1234   </span><br><span class="line">git add ..  </span><br><span class="line">git commit -m &quot;***&quot;</span><br><span class="line">git push origin issues1234</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>注意：将本地分支branch1推到远端的branch2操作步骤：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin branch1:branch2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><p>删除分支</p>
+<p>git branch -D issues1234 // 本地强制删除分支 issues1234    </p>
+<p>git push origin  :issues1234  //推到远程</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/git-操作规范/" data-id="cjgoou0rg000uvkxjf7j124bs" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-操作规范/">git 操作规范</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-git使用指南" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -116,7 +446,8 @@
 <ul>
 <li>百度 git 然后下载安装</li>
 </ul>
-<p><strong>配置</strong>(一次性配置,以后使用不用再管)设置<code>username</code>和<code>email</code>，因为github每次<code>commit</code>都会记录他们</p>
+<p><strong>配置</strong></p>
+<p>一次性配置,设置<code>username</code>和<code>email</code>，因为github每次<code>commit</code>都会记录他们</p>
 <ul>
 <li>$ git config –global user.name “自定义名字” (注册时填写的名字)</li>
 <li>$ git config –global user.email “email@地址.com”(注册的地址)</li>
@@ -195,6 +526,7 @@
 <ul>
 <li>git push origin :br  (origin 后面有空格)</li>
 <li>git push origin 【空格】【冒号】【你的分支名字】</li>
+<li>git push 【你的远程仓库在本地的别名】【空格】【冒号】【你的分支名字】</li>
 </ul>
 <p><strong>git代码库回滚</strong> (指将代码库某分支退回到以前的某个”commit id”)<br>本地代码库回滚</p>
 <ul>
@@ -234,7 +566,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/git使用指南/" data-id="cjgj13iks000j3sxjnf980gm9" class="article-share-link">Share</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/git使用指南/" data-id="cjgoou0ri000yvkxjzm6z55nw" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -300,7 +632,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/20/阅读理解/" data-id="cjgj13il1000v3sxjmgbsc1hu" class="article-share-link">Share</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/20/阅读理解/" data-id="cjgoou0sn001ovkxjglrt6i08" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文学技能/">文学技能</a></li></ul>
@@ -362,7 +694,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/19/响应式布局JS事件/" data-id="cjgj13iky000p3sxjtyb8c483" class="article-share-link">Share</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/19/响应式布局JS事件/" data-id="cjgoou0rd000ovkxjqpphjs08" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式/">响应式</a></li></ul>
@@ -437,7 +769,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/JS笔记-廖雪峰/" data-id="cjgj13ika00023sxjk0et59je" class="article-share-link">Share</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/JS笔记-廖雪峰/" data-id="cjgoou0q40002vkxjusuka40d" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES5-ES6/">ES5/ES6</a></li></ul>
@@ -494,7 +826,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/原生Ajax请求/" data-id="cjgj13il0000t3sxjyf9q108j" class="article-share-link">Share</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/原生Ajax请求/" data-id="cjgoou0rb000mvkxjnvyvk7dv" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -566,335 +898,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/CSS-潜藏着的BFC/" data-id="cjgj13ik400003sxj70u6jaxu" class="article-share-link">Share</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/CSS-潜藏着的BFC/" data-id="cjgoou0p50000vkxjsj1ptmld" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BFC/">BFC</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-VSCode使用笔记" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/16/VSCode使用笔记/" class="article-date">
-  <time class="post-time" datetime="2018-04-16T07:29:53.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br/>
-    <span class="post-day">16</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/16/VSCode使用笔记/">VSCode使用笔记</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/编辑器/">编辑器</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/2018/04/16/VSCode使用笔记/" class="leancloud_visitors" data-flag-title="VSCode使用笔记">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>(2018年2月8日 15:24:24)<br></p>
-<h2 id="发现"><a href="#发现" class="headerlink" title="发现"></a><strong>发现</strong></h2><ul>
-<li><h3 id="新建终端-2018年4月16日-15-50-22"><a href="#新建终端-2018年4月16日-15-50-22" class="headerlink" title="新建终端(2018年4月16日 15:50:22)"></a>新建终端(2018年4月16日 15:50:22)</h3><code>ctrl</code>+<code>shift</code>+<code>~</code></li>
-</ul>
-<h2 id="演练场"><a href="#演练场" class="headerlink" title="演练场"></a><strong>演练场</strong><br></h2><ul>
-<li><p><strong>Multi-Cursor Editing(多光标编辑)</strong><br></p>
-<ol>
-<li>框选择-按下<code>Ctrl+Shift+Alt+下箭头键</code>,<code>Ctrl+Shift+Alt+右转</code>,<code>Ctrl+Shift+Alt+UpArrow</code>,<code>Ctrl+Shift+Alt+LeftArrow</code>选择一个文本块,你也可以按住<code>Shift+Alt</code>,选择鼠标文本。</li>
-<li>添加一个光标-按<code>Ctrl+Alt+UpArrow</code>或<code>Ctrl+Alt+向下箭头</code>,在上面或下面添加一个新的游标,你也可以用Ctrl+Click来在任何地方添加光标。</li>
-<li>创建游标上出现的所有字符串的字符串-选择一个实例例如背景颜色和媒体未绑定。现在您可以通过简单地输入来替换所有实例。<br></li>
-</ol>
-</li>
-<li><p><strong>IntelliSense(智能提示)</strong><br></p>
-<ul>
-<li>Alt+Z/Alt+X</li>
-</ul>
-</li>
-<li><p><strong>Line Actions(行操作)</strong></p>
-<ol>
-<li>复制一条线,并将其插入到当前位置的上方或下方,分别使用Shift+Alt+向下箭头或Shift+Alt+UpArrow。</li>
-<li>用Alt+UpArrow和Alt+向下箭头移动整行或选择行。</li>
-<li>用Ctrl+Shift+K删除整个行。<br><br></li>
-</ol>
-<ul>
-<li>提示:另一个非常常见的任务是注释掉一个代码块——您可以通过按<code>Ctrl+/</code>来切换注释。</li>
-</ul>
-</li>
-<li><p><strong>Rename Refactoring(更名重构)</strong><br></p>
-<ul>
-<li>可以很容易地重命名一个符号,例如<code>函数名</code>或<code>变量名</code>。在<code>符号</code>“Book(例子)”中按<code>F2</code>重命名所有实例——这将发生在项目中的所有文件中。您还可以在右键单击上下文菜单中看到重构。</li>
-<li><code>JSDoc</code>提示:上面的示例还展示了通过使用<code>JSDoc</code>注释获得智能感知提示的另一种方法。您可以通过调用Book函数并查看功能和参数的智能感知体验中增强的上下文来尝试这一点。</li>
-</ul>
-</li>
-<li><p><strong>Refactoring via Extraction(!通过提取重构)</strong></p>
-<ul>
-<li>有时候,您希望将已经<code>编写好的代码</code>添加到一个<code>单独的函数</code>中,或者稍后再使用它。选择要提取的行并按<code>Ctrl+.</code>或者点击这个小灯泡,选择其中的一个提取到……选项。通过在第3行或任何其他您想要提出的通用代码中选择if-子句中的代码来尝试它。</li>
-</ul>
-</li>
-<li><p><strong>Formatting(格式化)</strong></p>
-<ul>
-<li>如果没有良好的格式化程序,让代码看起来很棒是很困难的。幸运的是,使用<code>Shift+Alt+F</code>或格式化的整个文档可以用<code>Ctrl+K Ctrl+F</code>来应用当前的选择。这两个选项都可以通过右键单击上下文菜单获得。</li>
-<li><code>Tip</code>: 可在扩展库中提供其他格式化程序。格式化支持也可以通过设置来配置,例如启用编辑器。</li>
-</ul>
-</li>
-<li><p><strong>Code folding(代码折叠)</strong></p>
-<ul>
-<li>在一个大的文件中,它通常可以用来折叠代码段以增加可读性。要做到这一点,你只需按<code>Ctrl+Shift+[</code>折叠代码-按<code>Ctrl+Shift+]</code>即可展开。折叠也可以用左边沟中的<code>+/-</code>图标来完成。按<code>Ctrl+Shift+Alt+[</code>或按<code>Ctrl+Shift+Alt+]</code>折叠所有部分。</li>
-<li>提示:折叠是基于缩进的,因此可以应用于所有语言。简单地缩进你的代码来创建一个可折叠的部分,你可以用Ctrl+K Ctrl+1和Ctrl+K Ctrl+5这样的快捷方式折叠一定数量的级别。</li>
-</ul>
-</li>
-<li><p><strong>Errors and Warnings(错误和警告)</strong></p>
-<ul>
-<li>在编辑代码时,会高亮显示错误和警告。在下面的示例中,您可以看到许多语法错误。按下<code>F8</code>,你可以按顺序浏览它们,并看到详细的错误信息。当您纠正它们时,弯角和滚动条指示器将会更新。</li>
-</ul>
-</li>
-<li><p><strong>Snippets(片段)</strong></p>
-<ul>
-<li>您可以通过使用片段大大加快编辑速度。简单地开始键入尝试,从<code>建议列表</code>和按<code>Tab</code>中选择<code>trycatch</code>来创建一个<code>try-&gt;catch块</code>。您的光标将被放置在文本错误,以方便编辑。如果有多个参数存在,则按Tab键跳到它。</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/VSCode使用笔记/" data-id="cjgj13ikn000d3sxjcfcx74c1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/">VSCode</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-MongoDB-备份与恢复" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/16/MongoDB-备份与恢复/" class="article-date">
-  <time class="post-time" datetime="2018-04-16T07:10:13.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br/>
-    <span class="post-day">16</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/16/MongoDB-备份与恢复/">MongoDB--备份与恢复</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/2018/04/16/MongoDB-备份与恢复/" class="leancloud_visitors" data-flag-title="MongoDB--备份与恢复">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="备份-mongodump-与恢复-mongorestore"><a href="#备份-mongodump-与恢复-mongorestore" class="headerlink" title="备份(mongodump)与恢复(mongorestore)"></a>备份(<code>mongodump</code>)与恢复(<code>mongorestore</code>)</h2><p>(<a href="http://www.runoob.com/mongodb/mongodb-mongodump-mongorestore.html" target="_blank" rel="noopener">http://www.runoob.com/mongodb/mongodb-mongodump-mongorestore.html</a>)<br><strong>数据备份</strong>(mongodump)<br>Mongodb中 使用<code>mongodump</code>命令来<code>备份</code>MongoDB数据。该命令可以<code>导出所有数据到指定目录中</code>。<br>mongodump命令可以通过<code>参数</code>指定导出的<code>数据量级</code>转存的服务器。<br><strong>语法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; mongodump -h dbhost -d dbname -o dbdirectory</span><br><span class="line">-h：MongDB所在服务器地址，例如：`127.0.0.1`，当然也可以指定端口号：`127.0.0.1:27017`</span><br><span class="line">-d：需要备份的数据库实例，例如：test</span><br><span class="line">-o：备份的数据存放位置，例如：c:\data\dump，当然该目录需要提前建立，在备份完成后，系统自动在dump目录下建立一个test目录，这个目录里面存放该数据库实例的备份数据。</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/MongoDB-备份与恢复/" data-id="cjgj13ikh00073sxj0kf379gm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-MongoDB-Node.js中的使用" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/16/MongoDB-Node.js中的使用/" class="article-date">
-  <time class="post-time" datetime="2018-04-16T06:03:08.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br/>
-    <span class="post-day">16</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/16/MongoDB-Node.js中的使用/">MongoDB在Node.js中的使用</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/2018/04/16/MongoDB-Node.js中的使用/" class="leancloud_visitors" data-flag-title="MongoDB在Node.js中的使用">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Node-js-中使用MongoDB-几乎是标配"><a href="#Node-js-中使用MongoDB-几乎是标配" class="headerlink" title="Node.js 中使用MongoDB(几乎是标配)"></a>Node.js 中使用MongoDB(几乎是标配)</h4><ul>
-<li>mac中安装MongoDB<br>brew install mongodb</li>
-<li>node.js 中使用mongoose第三方库来管理MongoDB<br>npm install mongoose –save</li>
-</ul>
-<ul>
-<li>为什么使用mongoose:官方的驱动都是 回调方式的API, 而mongoose封装成promise, 可使用await/async</li>
-</ul>
-<ul>
-<li>配置连接DB信息,并导出连接的对象<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import mongoose from &apos;mongoose&apos; // 引入</span><br><span class="line">const options = &#123;</span><br><span class="line">  user: &apos;admin&apos;,</span><br><span class="line">  pwd: &apos;123456&apos;,</span><br><span class="line">  host: &apos;localhost&apos;,</span><br><span class="line">  port: &apos;27017&apos;,</span><br><span class="line">  database: &apos;hollywood&apos;,</span><br><span class="line">  authSource: &apos;admin&apos;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const uri = `mongodb://$&#123;options.user&#125;:$&#123;options.pwd&#125;@$&#123;options.host&#125;:$&#123;options.port&#125;/$&#123;options.database&#125;?authSource=$&#123;options.authSource&#125;`</span><br><span class="line"></span><br><span class="line">mongoose.Promise = global.Promise //需要</span><br><span class="line">mongoose.connect(uri)</span><br><span class="line"></span><br><span class="line">export default mongoose</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>定义一个模型的概要，类似于关系型数据库中的定义表结构</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import db from &apos;../db.js&apos;</span><br><span class="line">import logger from &apos;../logger&apos;</span><br><span class="line">const Schema = db.Schema</span><br><span class="line"></span><br><span class="line">//account对应的字段</span><br><span class="line">const accountSchema = new Schema(</span><br><span class="line">  &#123;</span><br><span class="line">    name: &#123; type: String, maxlength: 15 &#125;,</span><br><span class="line">    password: &#123; type: String, maxlength: 20 &#125;,</span><br><span class="line">    gender: &#123; type: String, enum: [&apos;male&apos;, &apos;female&apos;] &#125;,</span><br><span class="line">    email: &#123; type: String, maxlength: 25 &#125;,</span><br><span class="line">    avatar: &#123; type: String &#125;,</span><br><span class="line">    age: &#123; type: Number &#125;,</span><br><span class="line">    create_date: &#123; type: Date &#125;,</span><br><span class="line">    update_date: &#123; type: Date &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    versionKey: false,</span><br><span class="line">  &#125;,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">//当account执行save()前，执行该代码片段，有点类似于中间件(这个方法内容仅仅是介绍pre()的使用方法)</span><br><span class="line">accountSchema.pre(&apos;save&apos;, function(next) &#123;</span><br><span class="line">const currentDate = new Date()</span><br><span class="line">if (!this.create_date) &#123;</span><br><span class="line">        this.create_date = currentDate</span><br><span class="line">&#125; else &#123;</span><br><span class="line">        this.update_date = currentDate</span><br><span class="line">&#125;</span><br><span class="line">next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//当account执行save()后</span><br><span class="line">&gt; ...</span><br><span class="line"></span><br><span class="line">//定义模型的方法</span><br><span class="line">accountSchema.methods.sayHi = () =&gt; (console.log(&apos;sayHi()!!!!!&apos;))</span><br><span class="line">const Account = db.model(&apos;Account&apos;, accountSchema)</span><br><span class="line">export default Account</span><br></pre></td></tr></table></figure></p>
-<p><strong>保存到数据库, 并返回一个保存到数据库的对象</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import Account from &apos;./model&apos;</span><br><span class="line"></span><br><span class="line">export default class AccountService &#123;</span><br><span class="line">  static async save(json) &#123;</span><br><span class="line">    const accountModel = new Account(json)</span><br><span class="line">    const account = await accountModel.save()</span><br><span class="line">    return account</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/MongoDB-Node.js中的使用/" data-id="cjgj13ikg00063sxjcwercdwn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-React-02" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/14/React-02/" class="article-date">
-  <time class="post-time" datetime="2017-09-14T14:51:40.000Z" itemprop="datePublished">
-    <span class="post-month">9月</span><br/>
-    <span class="post-day">14</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/14/React-02/">React-02</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/2017/09/14/React-02/" class="leancloud_visitors" data-flag-title="React-02">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>React作用：提供jsx的语法糖支持和Component的功能<br>ReactDom作用：渲染虚拟Dom和控制桌面内容<br>ReactDom.render(){渲染虚拟Dom,Element元素}</p>
-<p>核心概念：组件化！<br>组件：创建一个构造函数，使用ES6语法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class App extends Component&#123;</span><br><span class="line">  constructor()&#123;  //（ES6提供方法）</span><br><span class="line">    和 super()结合使用,来继承Compoent的方法</span><br><span class="line">    引入护法 state 状态（数据驱动视图）</span><br><span class="line">    //所有初始化属性都会存放在state</span><br><span class="line">    this.state=&#123;</span><br><span class="line">      count:0;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  xxx()&#123;//其他自定义事件&#125;</span><br><span class="line">  &apos;&#123;&#125;&apos;在任何地方都能插值</span><br><span class="line">  render()&#123;   //（React提供方法）</span><br><span class="line">    *React插入事件的方法</span><br><span class="line">    &apos;&#123;&#125;&apos;大括号的用法</span><br><span class="line">    &lt;button onClick=&#123;this.clickHandler&#125;&gt;点我&lt;/button&gt;</span><br><span class="line">  &#125;</span><br><span class="line">  //React里面function的=&gt;(箭头函数)写法能改变this的指向（如果用function会打印出window对象而不是App对象），call()和bind()也可以绑定this</span><br><span class="line">  // 在React中 修改state 不能直接修改 必须通过调用 this.setState()当前组建提供方法</span><br><span class="line">  // 数据驱动视图，当修改state的时候，数据修改如何驱动的视图？当每修改一次state后，render()方法会重新再走一次</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>01.19分分析state和生命周期的匹配与使用</p>
-<p>小心this的指向！</p>
-<p>09-14 02 29分 :<br>插值数组</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2017/09/14/React-02/" data-id="cjgj13ikk000c3sxj6dpg7b18" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
 
     </footer>
   </div>
@@ -949,9 +956,9 @@
     <h2 class="author">李仕臣</h2>
     <h3 class="description">李仕臣的博客</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>12</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
       <a href="/categories"><div><strong>8</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>9</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>12</strong><br>标签</div></a>
     </div>
 
 

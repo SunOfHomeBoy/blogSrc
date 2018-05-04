@@ -91,8 +91,6 @@ categories: git
 + git reset --hard commit-id :回滚到commit-id，将commit-id之后提交的commit都去除
 + git reset --hard HEAD~3：将最近3次的提交回滚
 
-
-
 ## 附：
 **Git 常用命令大全**
 (http://blog.csdn.net/dengsilinming/article/details/8000622)
@@ -116,9 +114,13 @@ Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 Your identification has been saved in /home/LiSC/.ssh/id_rsa.
 Your public key has been saved in /home/LiSC/.ssh/id_rsa.pub.
+
 The key fingerprint is:
+
 SHA256:SIyNEhF5sQX8YgjxEFjPBQnCFexfrL9fYLPX+L05QO0 903317164@qq.com
+
 The key's randomart image is:
+
 +---[RSA 2048]----+
 |B+OO==o          |
 |o=.=+O           |

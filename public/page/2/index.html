@@ -41,9 +41,9 @@
     <h2 class="author">李仕臣</h2>
     <h3 class="description">李仕臣的博客</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>8</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>12</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>10</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -68,6 +68,272 @@
 </div>
 
         <section id="main">
+  
+    <article id="post-响应式布局JS事件" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/19/响应式布局JS事件/" class="article-date">
+  <time class="post-time" datetime="2018-04-19T01:23:15.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br/>
+    <span class="post-day">19</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/响应式布局JS事件/">响应式布局JS事件</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/04/19/响应式布局JS事件/" class="leancloud_visitors" data-flag-title="响应式布局JS事件">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为解决屏幕分辨率问题，采用事件监听，动态修改 根节点 fontsize<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// getSize(解决rem布局)</span><br><span class="line">(function()&#123;</span><br><span class="line">	getSize();</span><br><span class="line">	window.addEventListener(&apos;resize&apos;,getSize);</span><br><span class="line">	</span><br><span class="line">	function getSize()&#123;</span><br><span class="line">		document.documentElement.style.fontSize </span><br><span class="line">		= document.documentElement.clientWidth/3.75/2+&apos;px&apos;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/19/响应式布局JS事件/" data-id="cjgrq8bq50011z8xjwh14fles" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式/">响应式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-JS笔记-廖雪峰" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/16/JS笔记-廖雪峰/" class="article-date">
+  <time class="post-time" datetime="2018-04-16T09:22:06.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br/>
+    <span class="post-day">16</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/16/JS笔记-廖雪峰/">JS笔记-廖雪峰</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/原生JS/">原生JS</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/04/16/JS笔记-廖雪峰/" class="leancloud_visitors" data-flag-title="JS笔记-廖雪峰">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ES6 Map和Set(廖雪峰)<br>(<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345007434430758e3ac6e1b44b1865178e7aff9082e000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345007434430758e3ac6e1b44b1865178e7aff9082e000</a>)<br><br>JavaScript的 默认对象 表示方式<code>{}</code>可以视为其他语言中的<code>Map</code>或<code>Dictionary</code>的数据结构，即一组<code>键值对</code>。<br>但是JavaScript的对象有个小问题，就是<code>键</code>必须是<code>字符串</code>。但实际上<code>Number</code>或者<code>其他数据类型</code>作为键也是非常合理的。</p>
+<p>为了解决这个问题，最新的<code>ES6</code>规范引入了 新的 数据类型<code>Map</code>。<br>测试浏览器是否支持<code>ES6规范</code> 执行以下代码，如浏览器报ReferenceError错误，那么你需要换一个支持ES6的浏览器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">var m = new Map();</span><br><span class="line">var s = new Set();</span><br><span class="line">console.log(&apos;你的浏览器支持Map和Set！&apos;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Map-增set-删delete-改set-查get-has"><a href="#Map-增set-删delete-改set-查get-has" class="headerlink" title="Map(增set 删delete 改set 查get has)"></a>Map(<code>增set</code> <code>删delete</code> <code>改set</code> <code>查get has</code>)</h2><p><code>Map</code>是一组<code>键值对</code>的结构，具有极快的查找速度。</p>
+<blockquote>
+<p>var m = new Map([[‘Michael’, 95], [‘Bob’, 75], [‘Tracy’, 85]]); <br><br>m.get(‘Michael’); // 95</p>
+</blockquote>
+<p>初始化Map需要一个二维数组，或者直接初始化一个空Map。Map具有以下方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map(); // 空Map</span><br><span class="line">m.set(&apos;Adam&apos;, 67); // 添加新的key-value</span><br><span class="line">m.set(&apos;Bob&apos;, 59);</span><br><span class="line">m.has(&apos;Adam&apos;); // 是否存在key &apos;Adam&apos;: true</span><br><span class="line">m.get(&apos;Adam&apos;); // 67</span><br><span class="line">m.delete(&apos;Adam&apos;); // 删除key &apos;Adam&apos;</span><br><span class="line">m.get(&apos;Adam&apos;); // undefined</span><br></pre></td></tr></table></figure></p>
+<p>一个key只能对应一个value，所以，多次对一个key放入value，后面的值会把前面的值冲掉：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map();</span><br><span class="line">m.set(&apos;Adam&apos;, 67);</span><br><span class="line">m.set(&apos;Adam&apos;, 88);</span><br><span class="line">m.get(&apos;Adam&apos;); // 88</span><br></pre></td></tr></table></figure></p>
+<h2 id="Set-没有重复的key"><a href="#Set-没有重复的key" class="headerlink" title="Set(没有重复的key)"></a>Set(<code>没有重复的key</code>)</h2><p><code>Set</code>和<code>Map</code>类似，也是一组<code>key的集合</code>，但<code>不存储value</code>。由于<code>key不能重复</code>，所以，在Set中，<code>没有重复的key</code>。<br>要<code>创建一个Set</code>，需要提供一个<code>Array</code>作为输入，或者<code>直接创建一个空Set</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var s1 = new Set(); // 空Set</span><br><span class="line">var s2 = new Set([1, 2, 3]); // 含1, 2, 3</span><br></pre></td></tr></table></figure></p>
+<p>重复元素在Set中自动被过滤：</p>
+<blockquote>
+<p>var s = new Set([1, 2, 3, 3, ‘3’]);<br>s; // Set {1, 2, 3, “3”}</p>
+</blockquote>
+<p>通过<code>add(key)</code>方法可以<code>添加元素到Set</code>中，可以重复添加，但不会有效果：<br>通过<code>delete(key)</code>方法可以删除元素：</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/JS笔记-廖雪峰/" data-id="cjgrq8bp60002z8xj6pu55sis" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES5-ES6/">ES5/ES6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-原生Ajax请求" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/16/原生Ajax请求/" class="article-date">
+  <time class="post-time" datetime="2018-04-16T08:01:01.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br/>
+    <span class="post-day">16</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/16/原生Ajax请求/">原生Ajax请求</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/04/16/原生Ajax请求/" class="leancloud_visitors" data-flag-title="原生Ajax请求">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/原生Ajax请求/" data-id="cjgrq8bq1000uz8xj7a0ijya8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-CSS-潜藏着的BFC" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/16/CSS-潜藏着的BFC/" class="article-date">
+  <time class="post-time" datetime="2018-04-16T07:54:04.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br/>
+    <span class="post-day">16</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/16/CSS-潜藏着的BFC/">CSS-潜藏着的BFC</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/04/16/CSS-潜藏着的BFC/" class="leancloud_visitors" data-flag-title="CSS-潜藏着的BFC">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、什么是BFC-Block-Formatting-Context"><a href="#一、什么是BFC-Block-Formatting-Context" class="headerlink" title="一、什么是BFC(Block Formatting Context)"></a>一、什么是BFC(Block Formatting Context)</h3><p>   写<code>CSS</code>样式时，对一个<code>元素</code>设置css,我们首先要知道这个元素是<code>块级元素</code>还是<code>行内元素</code>，而<code>BFC</code>就是用来<strong><code>格式化块级盒子</code></strong>的。<br><br>  <code>Formatting Context</code>：指页面中一个渲染区域，并且拥有一套渲染规则，它决定了其子元素如何定位，以及与其他元素的相互关系和作用。<br><br>  <code>BFC定义</code>：块级格式化上下文  它是指一个独立的块级渲染区域，只有<code>Block-level Box</code>参与，该区域拥有一套渲染规则来约束块级盒子的布局，且与区域外部无关。<br></p>
+<h3 id="二、BFC的生成"><a href="#二、BFC的生成" class="headerlink" title="二、BFC的生成"></a>二、BFC的生成</h3><p>  说到BFC是一块渲染区域，那么这块渲染区域到底在哪里呢，具体大小又是多少？这些都是由生成BFC的元素来决定的。<br><br>  满足下列CSS声明<code>之一</code>的元素便会生成BFC：</p>
+<ul>
+<li>1.根元素或其它包含它的元素</li>
+<li>2.float的值不为none；</li>
+<li>3.overflow的值不为visible；</li>
+<li>4.position的值不为static；</li>
+<li>5.display的值为inline-block、table-cell、table-caption；</li>
+<li><p>6.flex boxes (元素的display: flex或inline-flex)；</p>
+<p>注：也有人认为<code>display: table</code>能生成BFC，我认为最主要原因是table会默认生成一个匿名的table-cell，正是这个匿名的table-cell生成了BFC。</p>
+<h3 id="三、BFC的布局规则"><a href="#三、BFC的布局规则" class="headerlink" title="三、BFC的布局规则"></a>三、BFC的布局规则</h3><p>菜鸟教程待续</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/CSS-潜藏着的BFC/" data-id="cjgrq8bot0000z8xj2qr47o5v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BFC/">BFC</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-VSCode使用笔记" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -177,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/VSCode使用笔记/" data-id="cjgoou0qr000gvkxj7trktyod" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/VSCode使用笔记/" data-id="cjgrq8bpj0007z8xj0ych16d0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/">VSCode</a></li></ul>
@@ -239,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/MongoDB-备份与恢复/" data-id="cjgoou0qc0005vkxjjr11i9ca" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/MongoDB-备份与恢复/" data-id="cjgrq8bpf0005z8xjn55vd1go" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
@@ -314,7 +580,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/MongoDB-Node.js中的使用/" data-id="cjgoou0qh0007vkxjwltwvr1f" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/MongoDB-Node.js中的使用/" data-id="cjgrq8bre0021z8xjiymmsbzf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
@@ -380,7 +646,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2017/09/14/React-02/" data-id="cjgoou0tp001tvkxjvrw1r5wj" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2017/09/14/React-02/" data-id="cjgrq8bph0006z8xjsdm5m5ux" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
@@ -466,7 +732,7 @@ export default App;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2017/09/13/React-01/" data-id="cjgoou0qn000cvkxjj8bmuyjv" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2017/09/13/React-01/" data-id="cjgrq8brf0022z8xjxq27hl09" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
@@ -532,7 +798,7 @@ export default App;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2014/10/13/hello-world/" data-id="cjgoou0qe0006vkxjh0k74btw" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2014/10/13/hello-world/" data-id="cjgrq8bpw000mz8xj9ordzh48" class="article-share-link">Share</a>
       
       
     </footer>
@@ -588,9 +854,9 @@ export default App;
     <h2 class="author">李仕臣</h2>
     <h3 class="description">李仕臣的博客</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>8</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>12</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>10</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
     </div>
 
 

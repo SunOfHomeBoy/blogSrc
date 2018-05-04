@@ -8,9 +8,14 @@ categories: git
 # linux下docker部署gogs git仓库
 
 ## 1. 远程登录Linux服务器
-首先，linux 命令行使用 root ssh ([ssh远程登录命令简单实例](https://blog.csdn.net/ccfxue/article/details/52608829))
+首先，linux 命令行使用 root ssh ( [ssh远程登录命令简单实例](https://blog.csdn.net/ccfxue/article/details/52608829) )
 
-ssh root@192.168.0.xxx
+例如: [公司内网服务器]
+````
+ssh root@192.168.0.196
+
+psd: Jdyx[58]
+````
 
 ## 2. 拉取docker下gogs
 进入[gogs官网](https://hub.docker.com/r/gogs/gogs/)，在官网左侧找到 拉取命令
@@ -25,6 +30,29 @@ ssh root@192.168.0.xxx
 
 ## 3. 配置
 "`vim gogs.docker`": 进入并编辑 gogs.docker 配置文件
+
+[gogs-git官网 配置](https://github.com/gogits/gogs/tree/master/docker)
+
+````
+# Pull image from Docker Hub.
+$ docker pull gogs/gogs
+
+# Create local directory for volume.
+$ mkdir -p /var/gogs
+
+# Use `docker run` for the first time.
+$ docker run --name=gogs -p 10022:22 -p 10080:3000 -v /var/gogs:/data gogs/gogs
+
+# Use `docker start` if you have stopped it.
+$ docker start gogs
+````
+
+配置文件：
+````
+#!/bin/bash
+docker run --restart=always --name=gogs -p 3000:3000 -v /var/gogs:/data gogs/gogs
+````
+
 
 ## 4. 运行
 "`chmod +x gogs.docker`": 

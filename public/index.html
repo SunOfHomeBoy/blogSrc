@@ -41,9 +41,9 @@
     <h2 class="author">李仕臣</h2>
     <h3 class="description">李仕臣的博客</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>8</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>12</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>10</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -68,6 +68,267 @@
 </div>
 
         <section id="main">
+  
+    <article id="post-添加自定义shell" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/04/添加自定义shell/" class="article-date">
+  <time class="post-time" datetime="2018-05-04T03:34:46.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br/>
+    <span class="post-day">04</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/04/添加自定义shell/">添加自定义shell</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/shell/">shell</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/05/04/添加自定义shell/" class="leancloud_visitors" data-flag-title="添加自定义shell">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="添加自定义shell"><a href="#添加自定义shell" class="headerlink" title="添加自定义shell"></a>添加自定义shell</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ echo $PAT  // 打印 路径</span><br><span class="line">$ cd /home/LiSC/bi  // 转到第一个路径</span><br><span class="line">$ mkdir /home/LiSC/bin  // 创建文件夹</span><br><span class="line">$ vim github.shell  // 创建文件[把shell脚本复制粘贴]</span><br><span class="line">$ chmod +x github.shell  // 文件权限属性设置 =&gt; 用来变更文件或目录的权限</span><br></pre></td></tr></table></figure>
+<p>附：shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">## Coptyright 2016 The HongJiang Library Authors. All rights reserved.</span><br><span class="line">## Use of this source code is governed by a Apache-style</span><br><span class="line">## license that can be found in the LICNESE file.</span><br><span class="line">##</span><br><span class="line">## Git(Github.com) Common Client Commands.</span><br><span class="line">##</span><br><span class="line">## @authors hjboss &lt;hongjiangproject@gmail.com&gt; 2018-04 $$</span><br><span class="line">## @version 1.0.0</span><br><span class="line">GIT=`/usr/bin/which git`</span><br><span class="line">HOST=&apos;git@github.com&apos;</span><br><span class="line">NAME=&apos;hlibs&apos;</span><br><span class="line">SCRIPT=`basename $0`</span><br><span class="line"></span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">	&quot;add&quot;)</span><br><span class="line">		if [ $# -lt 2 ] || [ &quot;$2&quot; == &quot;*&quot; ]; then</span><br><span class="line">			$GIT add --all</span><br><span class="line">		else</span><br><span class="line">			$GIT add &quot;$2&quot;</span><br><span class="line">		fi</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	&quot;ci&quot;)</span><br><span class="line">		if [ $# -lt 2 ]; then</span><br><span class="line">			$GIT commit -a -m &quot;Initial commit&quot;</span><br><span class="line">		else</span><br><span class="line">			$GIT commit -a -m &quot;$2&quot;</span><br><span class="line">		fi</span><br><span class="line">		$GIT push -u origin master</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	&quot;co&quot;)</span><br><span class="line">		if [ $# -lt 2 ]; then</span><br><span class="line">			echo &quot;版本庫名稱不能空值&quot;</span><br><span class="line">		elif [ $# -eq 2 ]; then</span><br><span class="line">			$GIT clone &quot;$HOST:$NAME/$2.git&quot;</span><br><span class="line">		else</span><br><span class="line">			$GIT clone &quot;$HOST:$2/$3.git&quot;</span><br><span class="line">		fi</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	&quot;rm&quot;)</span><br><span class="line">		if [ $# -lt 2 ]; then</span><br><span class="line">			echo &quot;刪除文件名不能空值&quot;</span><br><span class="line">			exit</span><br><span class="line">		fi</span><br><span class="line">		$GIT rm &quot;$2&quot;</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	&quot;up&quot;)</span><br><span class="line">		$GIT pull</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	&quot;st&quot;)</span><br><span class="line">		$GIT status</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	&quot;help&quot;)</span><br><span class="line">		echo &quot;用法: $SCRIPT &lt;subcommand&gt; [args]&quot;</span><br><span class="line">		echo &quot;版本: 1.0.0&quot;</span><br><span class="line">		echo &quot;最常用的子命令:&quot;</span><br><span class="line">		echo &quot;  add 添加文件内容至索引&quot;</span><br><span class="line">		echo &quot;  ci 记录变更到版本库并且更新至github.com&quot;</span><br><span class="line">		echo &quot;  co 将给定名称的版本库克隆到一个新目录&quot;</span><br><span class="line">		echo &quot;  rm 从工作区和索引中删除文件&quot;</span><br><span class="line">		echo &quot;  up 本地分支更新到最新版本&quot;</span><br><span class="line">		echo &quot;  st 显示工作区状态&quot;</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	&quot;version&quot;)</span><br><span class="line">		echo &quot;$SCRIPT version 1.0.0&quot;</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	*)</span><br><span class="line">		echo &quot;使用$SCRIPT help得到用法&quot;</span><br><span class="line">	;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/05/04/添加自定义shell/" data-id="cjgrq8bq40010z8xjkfkx7x5f" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自定义shell/">自定义shell</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-git日常" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/04/git日常/" class="article-date">
+  <time class="post-time" datetime="2018-05-04T03:07:12.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br/>
+    <span class="post-day">04</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/04/git日常/">git日常</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/05/04/git日常/" class="leancloud_visitors" data-flag-title="git日常">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git使用日常"><a href="#git使用日常" class="headerlink" title="git使用日常"></a>git使用日常</h1><h2 id="拉取项目添加-用户名：密码"><a href="#拉取项目添加-用户名：密码" class="headerlink" title="拉取项目添加 用户名：密码"></a>拉取项目添加 用户名：密码</h2><p> git clone <a href="http://`lsc:sc123456@`192.168.0.196:3000/jdyx/shrs2006.com.git" target="_blank" rel="noopener">http://`lsc:sc123456@`192.168.0.196:3000/jdyx/shrs2006.com.git</a></p>
+<p> 克隆时可以 添加 <code>用户名：密码@</code> uri/url</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/05/04/git日常/" data-id="cjgrq8bpq000gz8xj4hqr02vz" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-linux下docker部署gogs-git仓库" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/04/linux下docker部署gogs-git仓库/" class="article-date">
+  <time class="post-time" datetime="2018-05-04T01:50:00.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br/>
+    <span class="post-day">04</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/04/linux下docker部署gogs-git仓库/">linux下docker部署gogs git仓库</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/05/04/linux下docker部署gogs-git仓库/" class="leancloud_visitors" data-flag-title="linux下docker部署gogs git仓库">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="linux下docker部署gogs-git仓库"><a href="#linux下docker部署gogs-git仓库" class="headerlink" title="linux下docker部署gogs git仓库"></a>linux下docker部署gogs git仓库</h1><h2 id="1-远程登录Linux服务器"><a href="#1-远程登录Linux服务器" class="headerlink" title="1. 远程登录Linux服务器"></a>1. 远程登录Linux服务器</h2><p>首先，linux 命令行使用 root ssh ( <a href="https://blog.csdn.net/ccfxue/article/details/52608829" target="_blank" rel="noopener">ssh远程登录命令简单实例</a> )</p>
+<p>例如: [公司内网服务器]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.0.196</span><br><span class="line"></span><br><span class="line">psd: Jdyx[58]</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-拉取docker下gogs"><a href="#2-拉取docker下gogs" class="headerlink" title="2. 拉取docker下gogs"></a>2. 拉取docker下gogs</h2><p>进入<a href="https://hub.docker.com/r/gogs/gogs/" target="_blank" rel="noopener">gogs官网</a>，在官网左侧找到 拉取命令</p>
+<p>命令行输入 拉取命令 <code>docker pull gogs/gogs</code></p>
+<p>拉取完成后 有提示，接着输入查看状态的<code>docker</code>命令 <code>docker ps</code></p>
+<p>“<code>docker ps</code>“: 属于Linux命令 是查看 <code>docker</code>状态的命令</p>
+<p>“<code>ls</code>“: 查看当前目录文件</p>
+<h2 id="3-配置"><a href="#3-配置" class="headerlink" title="3. 配置"></a>3. 配置</h2><p>“<code>vim gogs.docker</code>“: 进入并编辑 gogs.docker 配置文件</p>
+<p><a href="https://github.com/gogits/gogs/tree/master/docker" target="_blank" rel="noopener">gogs-git官网 配置</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Pull image from Docker Hub.</span><br><span class="line">$ docker pull gogs/gogs</span><br><span class="line"></span><br><span class="line"># Create local directory for volume.</span><br><span class="line">$ mkdir -p /var/gogs</span><br><span class="line"></span><br><span class="line"># Use `docker run` for the first time.</span><br><span class="line">$ docker run --name=gogs -p 10022:22 -p 10080:3000 -v /var/gogs:/data gogs/gogs</span><br><span class="line"></span><br><span class="line"># Use `docker start` if you have stopped it.</span><br><span class="line">$ docker start gogs</span><br></pre></td></tr></table></figure>
+<p>配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">docker run --restart=always --name=gogs -p 3000:3000 -v /var/gogs:/data gogs/gogs</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-运行"><a href="#4-运行" class="headerlink" title="4. 运行"></a>4. 运行</h2><p>“<code>chmod +x gogs.docker</code>“: </p>
+<p>“<code>echo $PATH</code>“: 打印 环境变量</p>
+<p>“<code>./gogs.docker</code>“：启动服务</p>
+<h2 id="5-重启服务"><a href="#5-重启服务" class="headerlink" title="5. 重启服务"></a>5. 重启服务</h2><p><code>docker ps</code>获取<code>CONTAINER ID</code></p>
+<p><code>docker restart [19d724ea6ec9(ID)]</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/05/04/linux下docker部署gogs-git仓库/" data-id="cjgrq8bpy000oz8xj8cxrm8z8" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gogs-docker/">gogs docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-SPDY：Google开发的下一代HTTP协议" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/03/SPDY：Google开发的下一代HTTP协议/" class="article-date">
+  <time class="post-time" datetime="2018-05-03T06:46:47.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br/>
+    <span class="post-day">03</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/03/SPDY：Google开发的下一代HTTP协议/">SPDY：Google开发的下一代HTTP协议</a>
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTTP/">HTTP</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/2018/05/03/SPDY：Google开发的下一代HTTP协议/" class="leancloud_visitors" data-flag-title="SPDY：Google开发的下一代HTTP协议">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SPDY-发音同”speedy”-：Google开发的下一代HTTP协议"><a href="#SPDY-发音同”speedy”-：Google开发的下一代HTTP协议" class="headerlink" title="SPDY(发音同”speedy”)：Google开发的下一代HTTP协议"></a><a href="http://josh-persistence.iteye.com/blog/2200727" target="_blank" rel="noopener">SPDY(发音同”speedy”)：Google开发的下一代HTTP协议</a></h1><p>（解决HTTP协议的缺点,Wrapper模式）</p>
+<p>概述</p>
+<p>SPDY是Google宣布正在开发的下一代网络协议，SPDY并不是一种用于替代HTTP的协议，而是对HTTP协议的增强。HTTP自上世纪90年代问世以来，已有二十年的历史，期间互联网本身发生了很大的变化，也使得HTTP的许多不足暴露了出来，现在它已经不能满足许多web app的要求。Google表示，引入SPDY协议后，在实验室测试中页面加载速度比原先快64%，并且目前已经在Gmail等应用中使用。目前业界支持SPDY的服务器有Netty和Nginx(将要支持)。Nginx 官方发布下一个版本 1.3.0 的路线图，该版本将支持 Google SPDY。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://SunOfHomeBoy.github.io/2018/05/03/SPDY：Google开发的下一代HTTP协议/" data-id="cjgrq8brg0024z8xjra0ao2tj" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SPDY/">SPDY</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
   
     <article id="post-数据库范式介绍" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -144,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/05/02/数据库范式介绍/" data-id="cjgoou0rf000svkxjvxb2uaw5" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/05/02/数据库范式介绍/" data-id="cjgrq8bq3000wz8xjwsqht2yl" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL范式/">SQL范式</a></li></ul>
@@ -213,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/linux 删除/" data-id="cjgoou0qu000ivkxjarw7iogy" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/linux 删除/" data-id="cjgrq8bq0000sz8xj8jvu4408" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-删除命令/">Linux 删除命令</a></li></ul>
@@ -282,7 +543,7 @@ git push
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/git-删除远程文件-目录/" data-id="cjgoou0ql000bvkxjfpk3pria" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/git-删除远程文件-目录/" data-id="cjgrq8bpl000bz8xjuwoa0ija" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-删除/">git 删除</a></li></ul>
@@ -385,7 +646,7 @@ git push
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/git-操作规范/" data-id="cjgoou0rg000uvkxjf7j124bs" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/git-操作规范/" data-id="cjgrq8bps000iz8xjwsq3msh8" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-操作规范/">git 操作规范</a></li></ul>
@@ -539,7 +800,11 @@ git push
 <h2 id="单位，win10电脑"><a href="#单位，win10电脑" class="headerlink" title="单位，win10电脑"></a>单位，win10电脑</h2><p>  2017年12月29日 09:15:05<br>  Ubuntu SSH:</p>
 <p>  $ ssh-keygen -t rsa -C ‘903317164@qq.com’</p>
 <p>Generating public/private rsa key pair.</p>
-<p>Enter file in which to save the key (/home/LiSC/.ssh/id_rsa):<br>Created directory ‘/home/LiSC/.ssh’.<br>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved in /home/LiSC/.ssh/id_rsa.<br>Your public key has been saved in /home/LiSC/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>SHA256:SIyNEhF5sQX8YgjxEFjPBQnCFexfrL9fYLPX+L05QO0 903317164@qq.com<br>The key’s randomart image is:<br>+—[RSA 2048]—-+<br>|B+OO==o          |<br>|o=.=+O           |<br>| .+o*.=       .  |<br>|  .oo..+     . . |<br>|   …+ S+  . .  |<br>|     o  . + o. E |<br>|      .  . + ..  |<br>|       .  o . …|<br>|       .o.   . +o|</p>
+<p>Enter file in which to save the key (/home/LiSC/.ssh/id_rsa):<br>Created directory ‘/home/LiSC/.ssh’.<br>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved in /home/LiSC/.ssh/id_rsa.<br>Your public key has been saved in /home/LiSC/.ssh/id_rsa.pub.</p>
+<p>The key fingerprint is:</p>
+<p>SHA256:SIyNEhF5sQX8YgjxEFjPBQnCFexfrL9fYLPX+L05QO0 903317164@qq.com</p>
+<p>The key’s randomart image is:</p>
+<p>+—[RSA 2048]—-+<br>|B+OO==o          |<br>|o=.=+O           |<br>| .+o*.=       .  |<br>|  .oo..+     . . |<br>|   …+ S+  . .  |<br>|     o  . + o. E |<br>|      .  . + ..  |<br>|       .  o . …|<br>|       .o.   . +o|</p>
 <h2 id="—-SHA256-—–"><a href="#—-SHA256-—–" class="headerlink" title="+—-[SHA256]—–+"></a>+—-[SHA256]—–+</h2><p>~$ ssh-keygen -t rsa - c ‘903317164@qq.com<br>生成公共/私有的rsa密钥对。<br>输入保存密钥的文件(/ home/LiSC/.ssh/id_rsa):<br>创建目录/ home / LiSC / . ssh。<br>输入passphrase(没有密码):<br>再次输入相同的密码:<br>您的身份已经保存在/ home/ lisc/. ssh/id_rsa。</p>
 <p>您的公钥已保存在/ home/ lisc/.ssh/id_rsa.pub中。</p>
 <p>指纹的关键是:<br>SHA256:SIyNEhF5sQX8YgjxEFjPBQnCFexfrL9fYLPX + L05QO0 903317164 @qq.com</p>
@@ -566,7 +831,7 @@ git push
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/git使用指南/" data-id="cjgoou0ri000yvkxjzm6z55nw" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/28/git使用指南/" data-id="cjgrq8bpn000cz8xj9f0kbvzm" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -632,276 +897,10 @@ git push
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/20/阅读理解/" data-id="cjgoou0sn001ovkxjglrt6i08" class="article-share-link">Partager</a>
+      <a data-url="http://SunOfHomeBoy.github.io/2018/04/20/阅读理解/" data-id="cjgrq8bq80015z8xjt154vsn2" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文学技能/">文学技能</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-响应式布局JS事件" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/19/响应式布局JS事件/" class="article-date">
-  <time class="post-time" datetime="2018-04-19T01:23:15.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br/>
-    <span class="post-day">19</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/响应式布局JS事件/">响应式布局JS事件</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/2018/04/19/响应式布局JS事件/" class="leancloud_visitors" data-flag-title="响应式布局JS事件">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>为解决屏幕分辨率问题，采用事件监听，动态修改 根节点 fontsize<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// getSize(解决rem布局)</span><br><span class="line">(function()&#123;</span><br><span class="line">	getSize();</span><br><span class="line">	window.addEventListener(&apos;resize&apos;,getSize);</span><br><span class="line">	</span><br><span class="line">	function getSize()&#123;</span><br><span class="line">		document.documentElement.style.fontSize </span><br><span class="line">		= document.documentElement.clientWidth/3.75/2+&apos;px&apos;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/19/响应式布局JS事件/" data-id="cjgoou0rd000ovkxjqpphjs08" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/响应式/">响应式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-JS笔记-廖雪峰" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/16/JS笔记-廖雪峰/" class="article-date">
-  <time class="post-time" datetime="2018-04-16T09:22:06.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br/>
-    <span class="post-day">16</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/16/JS笔记-廖雪峰/">JS笔记-廖雪峰</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/原生JS/">原生JS</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/2018/04/16/JS笔记-廖雪峰/" class="leancloud_visitors" data-flag-title="JS笔记-廖雪峰">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ES6 Map和Set(廖雪峰)<br>(<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345007434430758e3ac6e1b44b1865178e7aff9082e000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345007434430758e3ac6e1b44b1865178e7aff9082e000</a>)<br><br>JavaScript的 默认对象 表示方式<code>{}</code>可以视为其他语言中的<code>Map</code>或<code>Dictionary</code>的数据结构，即一组<code>键值对</code>。<br>但是JavaScript的对象有个小问题，就是<code>键</code>必须是<code>字符串</code>。但实际上<code>Number</code>或者<code>其他数据类型</code>作为键也是非常合理的。</p>
-<p>为了解决这个问题，最新的<code>ES6</code>规范引入了 新的 数据类型<code>Map</code>。<br>测试浏览器是否支持<code>ES6规范</code> 执行以下代码，如浏览器报ReferenceError错误，那么你需要换一个支持ES6的浏览器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">var m = new Map();</span><br><span class="line">var s = new Set();</span><br><span class="line">console.log(&apos;你的浏览器支持Map和Set！&apos;);</span><br></pre></td></tr></table></figure></p>
-<h2 id="Map-增set-删delete-改set-查get-has"><a href="#Map-增set-删delete-改set-查get-has" class="headerlink" title="Map(增set 删delete 改set 查get has)"></a>Map(<code>增set</code> <code>删delete</code> <code>改set</code> <code>查get has</code>)</h2><p><code>Map</code>是一组<code>键值对</code>的结构，具有极快的查找速度。</p>
-<blockquote>
-<p>var m = new Map([[‘Michael’, 95], [‘Bob’, 75], [‘Tracy’, 85]]); <br><br>m.get(‘Michael’); // 95</p>
-</blockquote>
-<p>初始化Map需要一个二维数组，或者直接初始化一个空Map。Map具有以下方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map(); // 空Map</span><br><span class="line">m.set(&apos;Adam&apos;, 67); // 添加新的key-value</span><br><span class="line">m.set(&apos;Bob&apos;, 59);</span><br><span class="line">m.has(&apos;Adam&apos;); // 是否存在key &apos;Adam&apos;: true</span><br><span class="line">m.get(&apos;Adam&apos;); // 67</span><br><span class="line">m.delete(&apos;Adam&apos;); // 删除key &apos;Adam&apos;</span><br><span class="line">m.get(&apos;Adam&apos;); // undefined</span><br></pre></td></tr></table></figure></p>
-<p>一个key只能对应一个value，所以，多次对一个key放入value，后面的值会把前面的值冲掉：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var m = new Map();</span><br><span class="line">m.set(&apos;Adam&apos;, 67);</span><br><span class="line">m.set(&apos;Adam&apos;, 88);</span><br><span class="line">m.get(&apos;Adam&apos;); // 88</span><br></pre></td></tr></table></figure></p>
-<h2 id="Set-没有重复的key"><a href="#Set-没有重复的key" class="headerlink" title="Set(没有重复的key)"></a>Set(<code>没有重复的key</code>)</h2><p><code>Set</code>和<code>Map</code>类似，也是一组<code>key的集合</code>，但<code>不存储value</code>。由于<code>key不能重复</code>，所以，在Set中，<code>没有重复的key</code>。<br>要<code>创建一个Set</code>，需要提供一个<code>Array</code>作为输入，或者<code>直接创建一个空Set</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var s1 = new Set(); // 空Set</span><br><span class="line">var s2 = new Set([1, 2, 3]); // 含1, 2, 3</span><br></pre></td></tr></table></figure></p>
-<p>重复元素在Set中自动被过滤：</p>
-<blockquote>
-<p>var s = new Set([1, 2, 3, 3, ‘3’]);<br>s; // Set {1, 2, 3, “3”}</p>
-</blockquote>
-<p>通过<code>add(key)</code>方法可以<code>添加元素到Set</code>中，可以重复添加，但不会有效果：<br>通过<code>delete(key)</code>方法可以删除元素：</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/JS笔记-廖雪峰/" data-id="cjgoou0q40002vkxjusuka40d" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES5-ES6/">ES5/ES6</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-原生Ajax请求" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/16/原生Ajax请求/" class="article-date">
-  <time class="post-time" datetime="2018-04-16T08:01:01.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br/>
-    <span class="post-day">16</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/16/原生Ajax请求/">原生Ajax请求</a>
-    </h1>
-  
-
-        <div>
-          
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/2018/04/16/原生Ajax请求/" class="leancloud_visitors" data-flag-title="原生Ajax请求">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/原生Ajax请求/" data-id="cjgoou0rb000mvkxjnvyvk7dv" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-CSS-潜藏着的BFC" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/16/CSS-潜藏着的BFC/" class="article-date">
-  <time class="post-time" datetime="2018-04-16T07:54:04.000Z" itemprop="datePublished">
-    <span class="post-month">4月</span><br/>
-    <span class="post-day">16</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/16/CSS-潜藏着的BFC/">CSS-潜藏着的BFC</a>
-    </h1>
-  
-
-        <div>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-  </div>
-
-          
-              
-  &nbsp; | &nbsp;
-  <div class="view-box">
-    <span id="/2018/04/16/CSS-潜藏着的BFC/" class="leancloud_visitors" data-flag-title="CSS-潜藏着的BFC">
-      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
-    </span>
-  </div>
-
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、什么是BFC-Block-Formatting-Context"><a href="#一、什么是BFC-Block-Formatting-Context" class="headerlink" title="一、什么是BFC(Block Formatting Context)"></a>一、什么是BFC(Block Formatting Context)</h3><p>   写<code>CSS</code>样式时，对一个<code>元素</code>设置css,我们首先要知道这个元素是<code>块级元素</code>还是<code>行内元素</code>，而<code>BFC</code>就是用来<strong><code>格式化块级盒子</code></strong>的。<br><br>  <code>Formatting Context</code>：指页面中一个渲染区域，并且拥有一套渲染规则，它决定了其子元素如何定位，以及与其他元素的相互关系和作用。<br><br>  <code>BFC定义</code>：块级格式化上下文  它是指一个独立的块级渲染区域，只有<code>Block-level Box</code>参与，该区域拥有一套渲染规则来约束块级盒子的布局，且与区域外部无关。<br></p>
-<h3 id="二、BFC的生成"><a href="#二、BFC的生成" class="headerlink" title="二、BFC的生成"></a>二、BFC的生成</h3><p>  说到BFC是一块渲染区域，那么这块渲染区域到底在哪里呢，具体大小又是多少？这些都是由生成BFC的元素来决定的。<br><br>  满足下列CSS声明<code>之一</code>的元素便会生成BFC：</p>
-<ul>
-<li>1.根元素或其它包含它的元素</li>
-<li>2.float的值不为none；</li>
-<li>3.overflow的值不为visible；</li>
-<li>4.position的值不为static；</li>
-<li>5.display的值为inline-block、table-cell、table-caption；</li>
-<li><p>6.flex boxes (元素的display: flex或inline-flex)；</p>
-<p>注：也有人认为<code>display: table</code>能生成BFC，我认为最主要原因是table会默认生成一个匿名的table-cell，正是这个匿名的table-cell生成了BFC。</p>
-<h3 id="三、BFC的布局规则"><a href="#三、BFC的布局规则" class="headerlink" title="三、BFC的布局规则"></a>三、BFC的布局规则</h3><p>菜鸟教程待续</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://SunOfHomeBoy.github.io/2018/04/16/CSS-潜藏着的BFC/" data-id="cjgoou0p50000vkxjsj1ptmld" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BFC/">BFC</a></li></ul>
 
     </footer>
   </div>
@@ -956,9 +955,9 @@ git push
     <h2 class="author">李仕臣</h2>
     <h3 class="description">李仕臣的博客</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>16</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>8</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>12</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>10</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>15</strong><br>标签</div></a>
     </div>
 
 

@@ -7,7 +7,7 @@ categories: shell
 ---
 # 添加自定义shell
 ````
-$ echo $PAT  // 打印 路径
+$ echo $PATH  // 打印 路径
 $ cd /home/LiSC/bi  // 转到第一个路径
 $ mkdir /home/LiSC/bin  // 创建文件夹
 $ vim github.shell  // 创建文件[把shell脚本复制粘贴]

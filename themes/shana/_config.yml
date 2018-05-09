@@ -24,7 +24,7 @@ index_widgets:
 
 # widget behavior
 archive_type: 'monthly'
-show_count: false
+show_count: true
 
 # Miscellaneous
 google_analytics:
@@ -39,7 +39,7 @@ fb_app_id:
 # galmenu决定是否开启
 # mp3play决定是否开启音效
 galmenu: true
-mp3play: false
+mp3play: true
 gaymenu_item:
 - name: 首页
   url : /
@@ -63,7 +63,7 @@ social:
 # name : url
 link_title: 友情链接
 links:
-  Sina: http://weibo.com/1691891903/profile?topnav=1&wvr=6
+  Sina微博: http://weibo.com/1691891903/profile?topnav=1&wvr=6
 
 
 # Sidebar Avatar
@@ -81,7 +81,7 @@ CNZZ:
 
 # 评论
 # 友言uid
-uyan: 
+uyan: 2162222
 
 # leadcloud访问次数统计
 # 

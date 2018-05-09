@@ -1,9 +1,9 @@
 ---
 title: nodejs全局安装路径的位置
 date: 2018-05-08 11:17:12
-tags:
-archives:
-categories:
+tags: Node全局路径
+archives: Node
+categories: Node
 ---
 一般nodejs安装在默认的C盘，如果不知道安装在哪里，可以打开控制面板-系统和安全-系统-高级配置中找到
 

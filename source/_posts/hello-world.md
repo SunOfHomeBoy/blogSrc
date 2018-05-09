@@ -1,6 +1,6 @@
 ---
 title: Hello World
-date: 2014-10-13 15:21:11
+date: 2014-10-1 15:21:11
 tags: 
 archives: 
 categories: 

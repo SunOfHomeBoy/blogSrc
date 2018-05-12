@@ -1,7 +1,7 @@
 ---
 title: 响应式布局JS事件
 date: 2018-04-19 09:23:15
-tags: 响应式
+tags: 响应式 getSize
 archives: 样式表
 categories: JS
 ---

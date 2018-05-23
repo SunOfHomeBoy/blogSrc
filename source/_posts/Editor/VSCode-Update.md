@@ -4,6 +4,7 @@ date: 2018-05-11 09:15:17
 tags: 编辑器更新
 categories: VSCode
 ---
+
 CODE SETTINGS SYNC UPLOAD SUMMARY
 
 Version: 2.9.2
@@ -67,5 +68,76 @@ Extensions Added: \
   weex v0.4.0 \
   xml v1.9.2
   
+--------------------
+Done.
+
+--------------------
+
+## 2018年5月23日 14:37:12
+
+CODE SETTINGS SYNC UPLOAD SUMMARY
+
+Version: 2.9.2
+
+--------------------
+
+GitHub Token: c49d7c88a2236d998b043830034a10d1b00ca5df
+
+GitHub Gist: daeb8021fc8862ba3a1fe162cc301c7c
+
+GitHub Gist Type: Secret
+
+Restarting Visual Studio Code may be required to apply color and file icon theme.
+
+--------------------
+
+Files Uploaded:
+
+  javascript.json > snippets|javascript.json
+
+  Extensions Removed:
+
+Extensions Added:\
+  Angular2 v6.1.1\
+  background v1.1.17\
+  beautify v1.3.0\
+  bracket-pair-colorizer v1.0.53\
+  code-gnu-global v0.2.2\
+  code-settings-sync v2.9.2\
+  cpptools v0.17.3\
+  ejs-language-support v0.0.1\
+  ejs-snippets v0.1.0\
+  git-project-manager v1.6.1\
+  githistory v0.4.1\
+  gitlens v8.3.2\
+  html-snippets v0.2.1\
+  java v0.25.0\
+  javascript-ejs-support v0.3.2\
+  JavaScriptSnippets v1.6.0\
+  jquerysnippets v0.0.1\
+  language-stylus v1.9.2\
+  mongoose-os-ide v0.3.0\
+  mssql v1.3.1\
+  node-module-intellisense v1.5.0\
+  npm-intellisense v1.3.0\
+  python v2018.4.0\
+  tslint v1.0.29\
+  vetur v0.12.3\
+  view-in-browser v0.0.5\
+  vscode-eslint v1.4.10\
+  vscode-great-icons v2.1.32\
+  vscode-html-css v0.2.0\
+  vscode-icons v7.23.0\
+  vscode-java-debug v0.9.0\
+  vscode-language-babel v0.0.14\
+  vscode-language-pack-zh-hans v1.23.5\
+  vscode-map-preview v0.4.2\
+  vscode-maven v0.8.0\
+  vscode-mongodb v0.0.2\
+  vscode-npm-script v0.3.4\
+  vscode-preview-server v1.0.1\
+  vue-vscode-snippets v1.3.0\
+  weex v0.4.0\
+  xml v1.9.2
 --------------------
 Done.

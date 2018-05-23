@@ -3,7 +3,7 @@ title: VSCode使用笔记
 date: 2017-01-16 15:29:53
 tags: VSCode
 archives: Editer
-categories: 编辑器
+categories: VSCode
 ---
 ## **发现**
 > ### 新建终端

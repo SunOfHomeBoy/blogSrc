@@ -7,3 +7,7 @@ categories: JS
 document.documentElement.clientWidth // 设备宽度
 
 window.innerWidth  // 窗口宽度
+
+document.documentElement.style.fontSize // 根节点 fontSize: string
+
+ let rootFZ = Number(document.documentElement.style.fontSize.split('px')[0]); // 根节点 fontSize: number

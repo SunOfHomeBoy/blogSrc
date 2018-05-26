@@ -81,9 +81,9 @@ Version: 2.9.2
 
 --------------------
 
-GitHub Token: c49d7c88a2236d998b043830034a10d1b00ca5df
+GitHub Token: **c49d7c88a2236d998b043830034a10d1b00ca5df**
 
-GitHub Gist: daeb8021fc8862ba3a1fe162cc301c7c
+**GitHub Gist: daeb8021fc8862ba3a1fe162cc301c7c**
 
 GitHub Gist Type: Secret
 
@@ -139,5 +139,6 @@ Extensions Added:\
   vue-vscode-snippets v1.3.0\
   weex v0.4.0\
   xml v1.9.2
+  
 --------------------
 Done.

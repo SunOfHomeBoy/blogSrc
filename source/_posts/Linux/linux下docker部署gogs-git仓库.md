@@ -14,7 +14,7 @@ categories: git
 ````
 ssh root@192.168.0.196
 
-psd: Jdyx[58]
+psd: Jdyx[5个8]
 ````
 
 ## 2. 拉取docker下gogs

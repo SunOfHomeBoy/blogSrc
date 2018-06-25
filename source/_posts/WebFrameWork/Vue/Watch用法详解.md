@@ -48,3 +48,7 @@ Vue.js 提供了一个方法 `watch`，它用于观察`Vue实例`上的`数据�
 ````
 ---
 [阅读原文](https://blog.csdn.net/itkingone/article/details/69568498)
+
+[另附: [Angular中使用$watch监听object属性值的变化](https://blog.csdn.net/u014291497/article/details/52245651)]
+
+---

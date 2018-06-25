@@ -7,11 +7,11 @@ categories: JS
 ## [转][理解JavaScript 执行机制及异步回调(setTimeout/setInterval/Promise)](https://blog.csdn.net/haoaiqian/article/details/78622651)
 '`javascript执行机制`' / '`代码执行顺序`' / '`函数生命周期加载`' 等类似问题 都与`javascript执行机制`相关。
 
-## 1. 关于javascript
-`javascript`是一门`单线程语言`，在最新的`HTML5`中提出了`Web-Worker`，但`javascript是单线程这一核心仍未改变`。所以一切`javascript版的"多线程"都是用单线程模拟出来的`，一切javascript`多线程`都是`纸老虎`！
+## 1. 关于JavaScript
+`JavaScript` 是一门 `单线程语言`，在最新的`HTML5`中提出了`Web-Worker`，但`JS 是单线程`这一`核心仍未改变`。所以一切`JS 版的"多线程"都是用单线程模拟出来的`，一切 JavaScript `多线程` 都是`纸老虎`！
 
-## 2. javascript事件循环
-既然js是`单线程`，排队 办理业务, `js任务`也要一个一个顺序执行。如 `任务耗时过长`，后一个任务必须等着。浏览新闻 超清图片加载慢 需要异步加载 任务分为两类：
+## 2. JavaScript事件循环
+既然JS是`单线程`，排队 办理业务, `js任务`也要一个一个顺序执行。如 `任务耗时过长`，后一个任务必须等着。浏览新闻 超清图片加载慢 需要异步加载 任务分为两类：
 + 同步任务\
 打开网站，`网页渲染` 过程 就是 `同步任务`，比如 `页面骨架`和 `页面元素`的`渲染`。
 + 异步任务\

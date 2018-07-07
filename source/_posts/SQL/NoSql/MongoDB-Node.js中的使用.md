@@ -31,7 +31,9 @@ mongoose.connect(uri)
 
 export default mongoose
 ````
+
 **定义一个模型的概要，类似于关系型数据库中的定义表结构**
+
 ````
 import db from '../db.js'
 import logger from '../logger'

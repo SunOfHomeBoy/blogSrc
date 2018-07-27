@@ -153,7 +153,10 @@ express-session 在options对象中接受这些属性。
     在设置安全cookie时（通过 `X-Forwarded-Proto` 标头）信任反向代理。  
     默认值为undefined。
 
-## --------adad 
+## 
+---
+
+## [node.js 中间件express-session使用详解](https://www.jb51.net/article/114232.htm)
 
 ## [同源策略以及cookie安全策略](https://blog.csdn.net/turkeyzhou/article/details/8818173)
 

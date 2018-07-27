@@ -2,7 +2,7 @@
 title: Git与SVN区别
 date: 2017-12-09 14:03:59
 tags: git与svn
-categories: GIT
+categories: git
 ---
 #### Git不仅是版本控制，也是内容/工作管理系统
 

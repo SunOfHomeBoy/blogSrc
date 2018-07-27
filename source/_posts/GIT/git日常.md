@@ -1,7 +1,7 @@
 ---
 title: git日常
 date: 2018-05-04 11:07:12
-tags:
+tags: git
 ---
 # git使用日常
 

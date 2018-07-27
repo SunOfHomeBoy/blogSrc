@@ -64,13 +64,15 @@ social:
 link_title: 友情链接
 links:
   Sina微博: http://weibo.com/1691891903/profile?topnav=1&wvr=6
+  个人邮箱：903317164@qq.com: null
 
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.jpg
 # in site  directory(source/uploads): /uploads/avatar.jpg
 # 头像
-avatar: http://a0.att.hudong.com/33/92/18300542770729141084923840634_s.jpg
+avatar: https://avatars2.githubusercontent.com/u/30047595?s=460&v=4
+#  http://a0.att.hudong.com/33/92/18300542770729141084923840634_s.jpg
 
 
 # 网站统计

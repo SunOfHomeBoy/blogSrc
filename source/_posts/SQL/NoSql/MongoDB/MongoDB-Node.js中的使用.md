@@ -5,7 +5,7 @@ tags: MongoDB
 archives: SQL
 categories: 数据库
 ---
-#### Node.js 中使用MongoDB(几乎是标配)
+### Node.js 中使用MongoDB(几乎是标配)
 + mac中安装MongoDB
 brew install mongodb
 + node.js 中使用mongoose第三方库来管理MongoDB
@@ -90,3 +90,24 @@ export default class AccountService {
 }
 ````
 
+## Mongoose
+Mongoose是MongoDB的一个对象模型工具，是基于node-mongodb-native开发的MongoDB nodejs驱动，可以在异步的环境下执行。
+
+同时它也是针对MongoDB操作的一个对象模型库，封装了MongoDB对文档的的一些增删改查等常用方法，让NodeJS操作Mongodb数据库变得更加灵活简单。
+
+我们通过Mongoose去创建一个“集合”并对其进行增删改查，就要用到它的三个属性：Schema(数据属性模型)、Model、Entity
+
+### 定义一个Schema
+````
+var mongoose = require("mongoose");
+ 
+var TestSchema = new mongoose.Schema({
+    name : { type:String },//属性name,类型为String
+    age  : { type:Number, default:0 },//属性age,类型为Number,默认为0
+    time : { type:Date, default:Date.now },
+    email: { type:String,default:''}
+});
+````
+[阅读原文](https://www.cnblogs.com/Leo_wl/p/4361289.html)
+
+---

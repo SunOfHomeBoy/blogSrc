@@ -66,8 +66,8 @@ categories: Nginx
 ### `sudo su` 使用管理员权限
 
 ### **创建登录脚本**
- cd /usr/local/bin/
- mkdir login
+ > cd /usr/local/bin/  
+ > mkdir login  `// Jdyx8*5`
  ````
  #!/bin/bash
  ssh root@47.104.231.254
@@ -81,7 +81,7 @@ categories: Nginx
 
 ### [sudo su 管理员权限运行](https://blog.csdn.net/guoweimelon/article/details/50471561)
 
- chmod a+x file-name [提升权限](http://man.linuxde.net/chmod)
+ > chmod a+x file-name [提升权限](http://man.linuxde.net/chmod)
 
 ### **第一步 使用pkg包管理工具`搜索/安装`Nginx**
  FreeBSD 安装 NGINX  // done

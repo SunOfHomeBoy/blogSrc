@@ -67,13 +67,15 @@ categories: Nginx
 
 ### **创建登录脚本**
  > cd /usr/local/bin/  
- > mkdir login  `// Jdyx8*5`
+ > vim login  `// Jdyx8*5`
  ````
  #!/bin/bash
  ssh root@47.104.231.254
  ````
  
 ### **创建文件上脚本**
+> cd /usr/local/bin/  
+ > vim remoteDeploy  `// Jdyx8*5`
  ````
  #!/bin/bash
  scp -r /mnt/d/Project/shrs/dist/* root@47.104.231.254:/mnt/www/shrs2006.com

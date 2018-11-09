@@ -32,14 +32,16 @@ const Button = React.createClass({
 [`容器`, `业务逻辑`, `取数据`, `布局(layout)`, `无状态组件`]
 
 ## 生命周期(lifecircle)
-初始化: 
+[参考文档](https://segmentfault.com/a/1190000004168886)
+**初始化:** 
 ````
 constructor
 componentWillMount
 + render()
 componentDidMount
 ````
-周期改变:(`props/state` 改变时 触发)
+
+**周期改变:**(`props/state` 改变时 触发)
 ````
 componentWillReceiveProps(nextProps) {
   <!-- 当组件可能接收到`新道具`时调用。即使道具没有改变，你也可以这样称呼它，所以如果你只想处理改变，一定要比较新的和现有的道具。 -->
@@ -53,6 +55,11 @@ componentWillUpdata() {
 componentDidUpdata
 ````
 
+**组件销毁:**
+````
+componentDis
+````
+
 ## 单向数据流
 被动接收 => 数据流逻辑
 
@@ -63,4 +70,12 @@ componentDidUpdata
   this.props.history.push('/login')
 ````
 
+## React.Children.map渲染对象
+````
+{
+    React.Children.map(children, (child) => {
+        return <Fragment>{child}</Fragment>
+    })
+}
+````
 

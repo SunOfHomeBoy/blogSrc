@@ -49,3 +49,20 @@ git push
 `git add`命令是个多功能命令，根据目标`文件状态`不同，此命令的效果也不同：可以用它`开始跟踪新文件`，或者`把已跟踪的文件放到暂存区`，还能用于`合并时把有冲突的文件标记为已解决状态`等
 
 我们需要用`git add`命令来跟踪新文件，但如果使用`git commit -am`可以省略使用`git add`命令将已跟踪文件放到暂存区的功能
+
+## git查看远程仓库信息
+> git remote -v
+
+> git remote show origin
+
+## git切换远程仓库地址
+方式一：修改远程仓库地址
+
+> git remote set-url origin URL  // 更换远程仓库地址，URL为新地址。
+
+方式二：先删除远程仓库地址，然后再添加
+
+> git remote rm origin // 删除现有远程仓库 
+> git remote add origin url // 添加新远程仓库
+
+## git添加、查看、删除远程仓库地址

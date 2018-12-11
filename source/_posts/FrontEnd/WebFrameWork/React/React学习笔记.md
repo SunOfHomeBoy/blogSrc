@@ -79,3 +79,11 @@ componentDis
 }
 ````
 
+## React-router 去掉url上的#
+````
+import {browserHistory} from 'react-router'
+<Router history={browserHistory}>
+...
+</Router>
+````
+

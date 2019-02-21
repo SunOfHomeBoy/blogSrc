@@ -322,4 +322,41 @@ API分为 四大类
     ACTION: mapSelect
     series-map 中地图区域选中后的事件。
 
+## 配置项
+
+## formatter 
+````
+axisLabel: {
+  interval: 0,
+  formatter:function(value){
+    // 拼接加\n返回的类目项
+    var ret = ""; 
+
+    // 一行显示文字个数
+    var maxLength = 2; 
+    
+    // X轴类 当前项 文字长度
+    var valLength = value.length; 
+
+    // 类目项需要换行的行数
+    var rowN = Math.ceil(valLength / maxLength); 
+    
+    //如果类目项的文字大于3
+    if (rowN > 1) {
+      for (var i = 0; i < rowN; i++) {
+        var temp = ""; // 每次截取的字符串
+        var start = i * maxLength; // 开始截取的位置
+        var end = start + maxLength; // 结束截取的位置
+        //这里也可以加一个是否是最后一行的判断，但是不加也没有影响，那就不加吧
+        temp = value.substring(start, end) + "\n";
+        ret += temp; // 凭借最终的字符串
+      }
+      return ret;
+    } else {
+        return value;
+    }
+  }
+}
+````
+
 

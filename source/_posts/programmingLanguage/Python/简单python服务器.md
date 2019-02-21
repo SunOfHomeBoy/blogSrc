@@ -6,7 +6,7 @@ categories: Python
 ---
 ## Python 2.7.14 SimpleHTTPServer
 ````
-python -m SimpleHTTPServer 8000
+'
 ````
 
 这里的“Web服务器模块”有如下三种：

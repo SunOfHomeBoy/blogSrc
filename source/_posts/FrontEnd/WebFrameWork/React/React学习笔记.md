@@ -161,3 +161,25 @@ render() {
   );
 }
 ```
+
+## React获取真实DOM元素[ref], 并获取元素样式
+```jsx
+<div
+  className='navContainer'
+  ref={navContainer => this.navContainer = navContainer} // ref 支持接收函数进行赋值
+  onMouseEnter={this.handleMouseEnter}
+  onMouseLeave={this.handleMouseLeave}
+>
+```
+
+```jsx
+// 获取样式
+const cssStyle = navContainer.currentStyle
+    ? navContainer.currentStyle
+    : document.defaultView.getComputedStyle(navContainer, null)
+
+// 获取详细样式
+const pr = navContainer.currentStyle
+    ? parseInt(cssStyle.paddingRight, 10)
+    : parseInt(cssStyle['padding-right'], 10)
+```

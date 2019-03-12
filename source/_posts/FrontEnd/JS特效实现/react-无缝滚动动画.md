@@ -100,7 +100,7 @@ animationInterval() {
 + react: `setState`
 
 ### 第四步 `鼠标移入移出/ 组件卸载` 清除定时器
-```ts
+```tsx
 removeAnimationInterval() {
   this.state.animationInterval && clearInterval(this.state.animationInterval);
 }
@@ -112,7 +112,7 @@ componenWillUnmount() {
 
 ## 附录 完整代码
 **CarouselList.js**
-```ts
+```tsx
 export default class CarouselList extends Component {
     constructor(props) {
         super(props);
@@ -133,6 +133,7 @@ export default class CarouselList extends Component {
     addHandleTimer = () => {
         let { data, scrollData } = this.state;
         if (!data || !data.length) return null;
+        // 定时器
         this.timer = setInterval(() => {
             if (scrollData > -27) {
                 scrollData--;
@@ -195,7 +196,7 @@ export default class CarouselList extends Component {
 ```
 
 **CarouselList2.js**
-```ts
+```tsx
 export default class CarouselList2 extends Component {
     constructor(props) {
         super(props);
@@ -294,7 +295,7 @@ export default class CarouselList2 extends Component {
 ```
 
 **InformationOnDuty.js**
-```ts
+```tsx
 import "./InformationOnDuty.scss"
 import { hidden } from "ansi-colors";
 
@@ -345,9 +346,7 @@ class InformationOnDuty extends Component {
       // dutyList.push(firstItem);
       if (scrollData % 128 === 0) {
         // debugger
-
         dutyList.shift();
-
         dutyList.push(firstItem);
         scrollData = 0;
         // debugger

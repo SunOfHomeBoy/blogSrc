@@ -66,9 +66,33 @@ componentDis
 ## 无状态组件如何避免`重绘(reflow)`/`重排版(repaint)`
 
 ## React 路由跳转
-````
+```js
   this.props.history.push('/login')
-````
+```
+
+## React路由 与 浏览器历史回退
+```jsx
+/** 
+ * 初始化 获取 window.location.href
+ */
+constructor(props, context) {
+    super(props, context)
+    this.curUrl = window.location.href.split('/')
+    this.state = {
+        current: this.curUrl[6] || this.curUrl[5],
+    }
+    this.handleClick = this.handleClick.bind(this);
+}
+
+/** 页面、路由变动时，再次 获取当前路由 */
+componentWillReceiveProps() {
+    this.curUrl = window.location.href.split('/')
+
+    this.setState({
+        current: this.curUrl[6] || this.curUrl[5],
+    })
+}
+```
 
 ## React.Children.map渲染对象
 ````
@@ -87,3 +111,53 @@ import {browserHistory} from 'react-router'
 </Router>
 ````
 
+## React-Context应用
+**父组件**
+```tsx
+/** 先定义 类似 ts中 interface  */
+export const Context = React.createContext({
+  updateHomeState: () => { },
+  homeState: {}
+});
+
+render() {
+  // debugger
+  return (
+    <Context.Provider value={{
+      updateHomeState: this.updateHomeState,
+      homeState: this.state
+    }}>
+      <div className="main">
+        <div className="center">
+          {/* 中间地图 */}
+          <CenterMap />
+        </div>
+      </div>
+    </Context.Provider>
+  );
+}
+```
+
+**子组件**
+```tsx
+import { Context } from "src/views/Home/Home"; // 先引入
+
+render() {
+  return (
+    /* 引用 祖先组件的 context */
+    <Context.Consumer>
+      {
+        ({ updateHomeState, homeState }) => (
+          <div className="CenterMap">
+            <MapTopMenu
+              tableListSize={homeState.tableListSize}
+              updateHomeState={updateHomeState}
+              onChange={this.onChange}
+            />
+          </div>
+        )
+      }
+    </Context.Consumer>
+  );
+}
+```

@@ -65,6 +65,17 @@ componentDis
 
 ## 无状态组件如何避免`重绘(reflow)`/`重排版(repaint)`
 
+## 避免组件reRender
+在 React 中，组件 state 的变化会触发该组件以下的整个组件子树的重新渲染。为了避免不必要的子组件重新渲染， 我们需要使用 PureComponent，或尽量实现 shouldComponentUpdate。还需要使用不可变的数据结构让 state 的变化更容易被优化：
+
+[与其他框架的比较——Vue.js](https://vuejs.org/v2/guide/comparison.html#Optimization-Efforts)
+
+## React-Router
+[reactRouter的三种形式](https://www.thinktxt.com/react/2017/02/26/react-router-browserHistory-refresh-404-solution.html)
++ hashHistory
++ browserHistory
++ createMemoryHistory
+
 ## React 路由跳转
 ```js
   this.props.history.push('/login')

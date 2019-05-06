@@ -9,6 +9,6 @@ categories: CSS
 .textOverflow {
   overflow: hidden;
   white-space: nowrap;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }
 ````

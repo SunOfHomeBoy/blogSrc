@@ -4,9 +4,9 @@ date: 2018-06-08 15:44:31
 tags: python SimpleHTTPServer
 categories: Python 
 ---
-## Python 2.7.14 SimpleHTTPServer
+## [Python 2.7.14 SimpleHTTPServer](https://www.cnblogs.com/chenjiaxin--007/p/8658419.html)
 ````
-'
+python -m SimpleHTTPServer 8000
 ````
 
 这里的“Web服务器模块”有如下三种：

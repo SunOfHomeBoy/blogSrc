@@ -324,11 +324,11 @@ API分为 四大类
 
 ## 配置项
 
-## formatter 
-````
+## formatter && rich
+```js
 axisLabel: {
   interval: 0,
-  formatter:function(value){
+  `formatter`:function(value){
     // 拼接加\n返回的类目项
     var ret = ""; 
 
@@ -355,8 +355,18 @@ axisLabel: {
     } else {
         return value;
     }
+  },
+  rich: {
+    a: {
+      // 样式
+    },
+    b: {
+      // 样式
+    }
   }
 }
-````
+
+
+```
 
 

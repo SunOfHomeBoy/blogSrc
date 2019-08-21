@@ -181,5 +181,26 @@ function insertionSorting(arr) {
 }
 ```
 
-+ 
-![]()
++ 选择排序
+![选择排序](../../assets/img/selectionSort.gif)
+```js
+function selectionSort(arr) {
+  var len = arr.length;
+  var minIndex, temp;
+  for (let i = 0; i < len -1; i++) {
+    minIndex = i;
+    for (let j = i + 1; j < len; j++) {
+      if (arr[j] < arr[minIndex]) minIndex = j;
+    }
+    temp = arr[i];
+    arr[i] = arr[minIndex];
+    arr[minIndex] = temp;
+  }
+  return arr
+}
+```
+
+#### 时/空间复杂度
+在冒泡排序，插入排序，选择排序，快速排序中，在最最坏情况下，快速排序的时间复杂为O(n2) ，插入排序O(n2)，选择排序O(n2)，冒泡排序O(n2)
+
+![算法时/空间复杂度](../../assets/img/complexity.png)

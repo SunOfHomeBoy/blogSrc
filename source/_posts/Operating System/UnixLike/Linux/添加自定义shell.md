@@ -6,18 +6,18 @@ archives: shell脚本
 categories: shell
 ---
 # 添加自定义github.shell
-````
+```shell
 $ echo $PATH  // 打印 路径
 $ cd /home/LiSC/bin  // 转到第一个路径
 $ mkdir /home/LiSC/bin  // 创建文件夹
 $ vim github.shell  // 创建文件[把shell脚本复制粘贴]
 $ chmod +x github.shell  // 文件权限属性设置 => 用来变更文件或目录的权限
-````
+```
 
 附：shell
-````
+```shell
 #!/bin/bash
-## Coptyright 2016 The HongJiang Library Authors. All rights reserved.
+## Coptyright 2016 The LiShiChen Library Authors. All rights reserved.
 ## Use of this source code is governed by a Apache-style
 ## license that can be found in the LICNESE file.
 ##
@@ -27,7 +27,7 @@ $ chmod +x github.shell  // 文件权限属性设置 => 用来变更文件或目
 ## @version 1.0.0
 GIT=`/usr/bin/which git`
 HOST='git@github.com'
-NAME='hlibs'
+NAME='SunOfHomeBoy'
 SCRIPT=`basename $0`
 
 case "$1" in
@@ -94,14 +94,14 @@ case "$1" in
 		echo "使用$SCRIPT help得到用法"
 	;;
 esac
-````
+```
 
 # 自定义NPM脚本
 `sbin & bin 区别` root可以访问 `sbin` 下的脚本
 > /usr/local/sbin/npm.shell
 
-````
+```shell
 #!/bin/sh
 npm --registry=https://registry.npm.taobao.org $*
-````
+```
 **`$*`**: 属于 process 环境变量

@@ -3,6 +3,55 @@ title: git日常
 date: 2018-05-04 11:07:12
 tags: git
 ---
+# Git-everyday
+## 实例
+### 1、Use a tarball as a starting point for a new repository.
+使用`tarball`作为新存储库的起点。
+```shell
+$ tar zxf frotz.tar.gz  # 注释 解压缩
+$ cd frotz              # shell 命令
+$ git init              # 初始化
+$ git add . (1)         # 见 注释 1
+$ git commit -m "import of frotz source tree."  # 添加 提交注释
+$ git tag v2.43 (2)     # 见 注释 2
+```
+注解
+1. add everything under the current directory. (添加当前目录下所有内容);
+2. make a lightweight, unannotated tag.(制作一个轻量级的、不带注释的标记。)
+
+<hr/>
+
+### 2、Create a topic branch and develop.
+创建一个主题分支并进行开发。
+```shell
+$ git checkout -b alsa-audio (1)
+$ edit/compile/test
+$ git checkout -- curses/ux_audio_oss.c (2)
+$ git add curses/ux_audio_alsa.c (3)
+$ edit/compile/test
+$ git diff HEAD (4)
+$ git commit -a -s (5)
+$ edit/compile/test
+$ git diff HEAD^ (6)
+$ git commit -a --amend (7)
+$ git checkout master (8)
+$ git merge alsa-audio (9)
+$ git log --since='3 days ago' (10)
+$ git log v2.43.. curses/ (11)
+```
+注解
+1. create a new topic branch.
+创建 一个新的 主题分支
+2. revert your botched changes in curses/ux_audio_oss.c.
+3. you need to tell Git if you added a new file; removal and modification will be caught if you do git commit -a later.
+4. to see what changes you are committing.
+5. commit everything, as you have tested, with your sign-off.
+6. look at all your changes including the previous commit.
+7. amend the previous commit, adding all your new changes, using your original message.
+8. switch to the master branch.
+9. merge a topic branch into your master branch.
+10. review commit logs; other forms to limit output can be combined and include -10 (to show up to 10 commits), --until=2005-12-10, etc.
+
 # git使用日常
 
 ## 一、拉取项目添加 "用户名：密码"

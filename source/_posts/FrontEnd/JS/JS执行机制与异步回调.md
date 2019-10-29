@@ -1,9 +1,10 @@
 ---
 title: JS执行机制与异步回调
 date: 2018-05-09 14:38:24
-tags: JS执行机制 异步回调
+tags: JS执行机制 异步回调 线程
 categories: JS
 ---
+# JS运行时/执行机制/线程
 ## [转][理解JavaScript 执行机制及异步回调(setTimeout/setInterval/Promise)](https://blog.csdn.net/haoaiqian/article/details/78622651)
 '`javascript执行机制`' / '`代码执行顺序`' / '`函数生命周期加载`' 等类似问题 都与`javascript执行机制`相关。
 
@@ -77,3 +78,84 @@ sleep(10000000)
 + `sleep`终于执行完了，`task()`终于从Event Queue进入了主线程执行。
 
 上述的流程走完，我们知道`setTimeout`这个函数，是经过指定时间后，把要执行的任务(本例中为`task()`)加入到Event Queue中，又因为是单线程任务要一个一个执行，如果前面的任务需要的时间太久，那么只能等着，导致真正的延迟时间远远大于3秒。
+
+## 4. [转][从setTimeout/setInterval看JS线程](https://mp.weixin.qq.com/s/FCy68lhFhEcm8o26f7970A)
+`setTimeout`和`setInterval`的`延时最小间隔`是`4ms`(W3C在HTML标准中规定)；
+
+在`JavaScript`中`没有`任何代码是`立刻执行`的，但`一旦进程空闲`就`尽快执行`。
+
+这意味着无论是`setTimeout`还是`setInterval`，所设置的时间都只是 `n毫秒后被添加到队列中`，而`不是`过`n毫秒后立即执行`。
+
+---------------------
+[阅读原文](https://mp.weixin.qq.com/s/FCy68lhFhEcm8o26f7970A)
+
+## 5. Promise Async/await 运行时机制
+故事要从一道今日头条的笔试题说起～ 
+
+题目来源：[半年工作经验今日头条和美团面试题面经分享！！！！！](https://juejin.im/post/5b03e79951882542891913e8)
+
+```js
+async function async1(){
+
+    console.log('async1 start')
+
+    await async2()
+
+    console.log('async1 end')
+
+}
+
+async function async2(){
+
+    console.log('async2')
+
+}
+
+console.log('script start')
+
+setTimeout(function(){
+
+    console.log('setTimeout') 
+
+},0)  
+
+async1();
+
+new Promise(function(resolve){
+
+    console.log('promise1')
+
+    resolve();
+
+}).then(function(){
+
+    console.log('promise2')
+
+})
+
+console.log('script end')
+```
+
+求打印结果？
+
+题目考 js 事件循环和回调队列～ 假设看客已经了解 `setTimeout` 是`宏任务`会在`最后执行`的前提（因为它不是今天要讨论的重点），主要讨论 `promise`、`async` 和 `await` 之间的关系。
+
+`async/awit` 属于 `Promise` 语法糖 同属 `异步微任务`，执行结果 按先后顺序 => 先进先出 后进后出 
+
+运行结果
+````
+1. console.log('script start')  // 同步任务
+2. console.log('async1 start') 
+   async2 开始执行
+   async1 让出线程 进入 微任务队列 等待 async2
+3. console.log('async2')        // 
+4. console.log('promise1')      // 
+5. console.log('script end')
+   当前任务队列 线程执行完毕
+6. console.log('async1 end')
+VM272:18 
+7. console.log('promise2')
+8. console.log('setTimeout')
+````
+
+---

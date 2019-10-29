@@ -6,19 +6,14 @@ categories: UnixLike
 ---
 ## Ubuntu查看系统版本-Linux内核版本
 
-````
-sudo lsb_release -a
-
-cat /etc/os-release
-
-cat /etc/redhat-release
-
-rpm -q centos-release
-
-uname -a
-
-cat /proc/version
-````
+```bash
+$ sudo lsb_release -a
+$ cat /etc/os-release
+$ cat /etc/redhat-release
+$ rpm -q centos-release
+$ uname -a
+$ cat /proc/version
+```
 
 ---
 

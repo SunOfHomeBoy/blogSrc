@@ -6,6 +6,8 @@ categories: JS
 ---
 # [js之iframe父子页面通信](https://www.cnblogs.com/sydeveloper/p/3712863.html)
 
+**总结**
+父页面 可在 window上 挂载 `命名空间` 存放`属性`和`方法`
 父页面
 ````
 /** 父页面需要在 window对象上 挂载一个 方法，供子页面调用 */

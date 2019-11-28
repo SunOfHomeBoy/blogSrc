@@ -1,8 +1,87 @@
 ---
 title: VSCode Update
 date: 2018-05-11 09:15:17
-tags: 编辑器更新
+tags: 编辑器更新 windows setingsSync
 categories: VSCode
+---
+## windows 同步
+2019年11月28日 13:45:08
+
+CODE SETTINGS SYNC UPLOAD SUMMARY
+Version: 3.4.3
+--------------------
+GitHub Token: 6598**********
+GitHub Gist: 12d91e8460e10f3c9083b82a25623363
+GitHub Gist Type: Secret
+
+Restarting Visual Studio Code may be required to apply color and file icon theme.
+--------------------
+Files Uploaded:
+  extensions.json > extensions.json
+  keybindings.json > keybindings.json
+  settings.json > settings.json
+  javascript.json > snippets\javascript.json
+
+Extensions Ignored:
+  No extensions ignored.
+
+Extensions Removed:
+  No extensions removed.
+
+Extensions Added:
+  Angular2 v8.2.0
+  auto-rename-tag v0.1.1
+  background v1.1.21
+  bracket-pair-colorizer v1.0.61
+  code-gnu-global v0.2.2
+  code-settings-sync v3.4.3
+  cpptools v0.26.1
+  dart-code v3.6.0
+  ejs-language-support v0.0.1
+  ejs-snippets v0.1.0
+  git-project-manager v1.7.1
+  githistory v0.4.6
+  gitlens v10.2.0
+  html-snippets v0.2.1
+  java v0.53.1
+  javascript-ejs-support v1.1.3
+  JavaScriptSnippets v1.7.2
+  jquerysnippets v0.0.1
+  language-stylus v1.11.0
+  mssql v1.7.1
+  node-module-intellisense v1.5.0
+  npm-intellisense v1.3.0
+  powershell v2019.11.0
+  python v2019.11.50794
+  python v0.2.3
+  remote-wsl v0.40.3
+  vetur v0.22.6
+  view-in-browser v0.0.5
+  vscode-eslint v1.9.1
+  vscode-great-icons v2.1.47
+  vscode-html-css v0.2.3
+  vscode-icons v9.6.0
+  vscode-java-debug v0.23.0
+  vscode-java-dependency v0.6.0
+  vscode-java-pack v0.8.0
+  vscode-java-test v0.21.0
+  vscode-language-babel v0.0.25
+  vscode-language-pack-zh-hans v1.40.2
+  vscode-leetcode v0.15.7
+  vscode-m3u v1.0.0
+  vscode-map-preview v0.4.8
+  vscode-maven v0.19.1
+  vscode-mongodb v0.0.2
+  vscode-npm-script v0.3.9
+  vscode-preview-server v1.3.0
+  vscode-scss-formatter v1.4.2
+  vscodeintellicode v1.2.0
+  vue-vscode-snippets v1.8.0
+  weex v0.4.0
+  xml v2.5.0
+--------------------
+Done.
+
 ---
 
 CODE SETTINGS SYNC UPLOAD SUMMARY

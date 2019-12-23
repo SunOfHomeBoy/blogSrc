@@ -1,7 +1,7 @@
 ---
 title: Npx简介及实用命令
 date: 2019-11-18 11:26:40
-tags:
+tags: npx
 categories: Npx
 ---
 # Npx简介
@@ -12,6 +12,9 @@ categories: Npx
 $> npx nrm use taobao       # 无须安装 nrm 即可使用
 $> npx http-server -p 3000  # 快速启动 静态文件服务器 -p 指定端口号
 ```
+
+## npm/npx/nrm/nvm 区别
+[参考链接](https://blog.csdn.net/bamboozjy/article/details/86605659)
 
 ---
 [参考](https://www.cnblogs.com/rubylouvre/p/8143062.html)

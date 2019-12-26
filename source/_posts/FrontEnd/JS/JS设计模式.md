@@ -838,7 +838,191 @@ p.fun1()
 
 ### 场景
 + JQuery - $('div')
+  - $('div') & new $('div') 区别
+    - 书写麻烦， 链式调用 使用麻烦
+    - 构造函数名变化 是 灾难性的 
+  - 阅读 经典lib 源码的意义
+    - 学习如何实现功能    (基本要求)
+    - 学习设计思路       (更高层次)
+    - 强制自己写代码 - 刻意训练
+    - 使自己写出优越代码
+  - 创新 和 拿来主义
+    - 站在巨人肩膀上
+    - 不需要创新, 看会了拿来用
 + React.createElement
 + vue 异步组件
 
+#### 设计原则验证
++ 构造函数 和 创建者分离
++ 符合 开放/封闭 原则
+
 ### 总结
++ 介绍 & 示例
++ UML类图 + 演示
++ 经典 使用场景
+
+## 5 单例模式
+### 介绍
++ 系统中 唯一使用
++ 思想：`实例 != null ? 实例 : new class()`
+
++ 一个类只有一个实例
+### 示例
++ 登录框
++ 购物车
+#### 说明
++ 单例模式 需用 java特性(private)
++ ES6 没有private(TS支持)
++ 只能用Java代码演示UML类图内容 
+
+```js
+// js单例模式
+class SingleObject {
+  login() {
+    console.log('login...')
+  }
+}
+
+SingleObject.getInstance = ~function () {
+  let instance = null;
+  return function () {
+    if(!instance) {
+      instance = new SingleObject();
+    }
+    return instance
+  }
+}()
+
+// 测试
+// 只能通过 文档约定 使用静态函数 getInstance, 不能 new SingleObject()
+let obj1 = SingleObject.getInstance();
+obj1.login()
+let obj2 = SingleObject.getInstance();
+obj2.login()
+console.log(obj1 === obj2)  // 两者必须完全相等
+
+console.log('---分割线---')
+
+let obj3 = new SingleObject();
+obj3.login()
+console.log(obj1 === obj3)  // false
+
+
+```
+```java
+public class SingleObject {
+  // 私有化构造函数 外部不能 new，只能内部new
+  private SingleObject() { }
+  /** 唯一被 new 实例化 出来对象 */
+  private SingleObject instance = null;
+  // 获取实例对象唯一接口
+  public SingleObhect getInstance() {
+    if(instance === null) {
+      // 只 new 一次
+      instance = new SingleObject();
+    }
+    return instance;
+  }
+
+  // 对象方法
+  public void login(username, password) {
+    System.out.println("login...");
+  }
+}
+
+// 测试
+public class SingletonPatternDemo {
+  public static void main(String[] args) {
+    // 不合法的 构造函数
+    // 编译时错误：构造函数 SingleObject() 是不可见的
+    // SingleObject object = new SingleObject();
+
+    // 获取唯一实例对象
+    SingleObject object = SingleObject.getInstance();
+    object.login();
+  }
+}
+
+```
+
+### 场景
++ JQuery 只有一个 `$`
+```js
+if(window.jQuery != null) {
+  return window.jQuery
+} else {
+  // 初始化
+}
+```
++ 模拟登录框
+  - 代码相似
+
+### 设计原则验证
++ 符合单一职责原则，只实例化唯一的对象
++ 无法具体体现 开放封闭原则，但是绝不违反 开放封闭原则
+
+### 总结
++ 介绍 和 示例
+  - 唯一实例
+  - 购物车、登录框
++ UML类图 和 演示
+  - java + js 模拟
++ 经典使用场景
+  - jquery 防止多次初始化
+  - Redux & Vuex
+
+## 6 适配器模式
+### 介绍
++ 旧接口格式 和 使用者不兼容
++ 中间加一个适配转换接口
+  - 插排 接口 不同，通过 转换器
+  - typeC => 3.0 耳机孔 ...
++ 获取现有接口、数据、 资源 => 转换新数据、接口、资源
+### UML
+
+### 代码演示
+```js
+class Adaptee {
+  specificRequest() {
+    return '德国标准插头'
+  }
+}
+
+class Target {
+  constructor() {
+    this.adaptee = new Adaptee()
+  }
+  request() {
+    let info = this.adaptee.specificRequest()
+    return `${info} - 转换器 - 中国标准插头`
+  }
+}
+
+// 测试
+let target = new Target()
+let res = target.request()
+console.log(res)
+```
+
+### 场景
++ 旧接口封装
+```js
+window.$ = {
+  ajax: function (options) {
+    return axios(options);
+  }
+}
+```  
++ Vue computed 计算方法
+
+
+
+1. 有全栈开发云部署经验 使用 TS/ES Node/React/Vue/MongoDB 在Linux多个发行版 开发前后端项目
+2. 擅长HTML5、CSS/CSS3、JavaScript、TypeScript、jQuery、Vue及其生态库、React及其生态库。
+ 儿话机制Bootstrap、
+3. 了解 浏览器/Node 模块化机制
+ requirejs、swiper、
+4. 熟练使用 git/svn 代码管理工具 
+5. 拥有搭建 webpack、ajax等前沿技术，熟练使用vue全家桶，生命周期，前端路由。对mvvm有自己的理解。
+2. 在现公司从事大数据可视化开发工作，熟练使用echarts，有ArcGIS mapbox 超图等 WEBGIS 开发经验 
+

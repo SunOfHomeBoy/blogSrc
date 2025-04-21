@@ -8,7 +8,7 @@ categories: note
 
 ```tsx
 /*
- * @Description: 关联性分析散点图组件
+ * @Description: 关联性分析散点图组件 二次拟合函数&最小二乘法数学模型
  * @Date: 2025-04-16 15:42:15
  * @FilePath: \LL_HighWayMonitor_FG\src\view\OperationalMonitoring\components\LayoutsF\ScatterChart.tsx
  */

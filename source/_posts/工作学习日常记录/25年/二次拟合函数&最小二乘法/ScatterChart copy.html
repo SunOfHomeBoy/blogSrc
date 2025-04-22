@@ -123,107 +123,124 @@
         }
       };
 
-      // --- Chart Initialization Logic (adapted from initChart) ---
-      const initChart = (scatterData, fittedCurve, maxFlowPoint) => {
-        const direction = 'lanzhou'; // Default direction
-
-        const markLineData = maxFlowPoint
-          ? [
-            {
-              yAxis: maxFlowPoint[1],
-              lineStyle: { color: '#ff4d4f', type: 'dashed' },
-              label: { formatter: `${maxFlowPoint[1].toFixed(2)}km/h`, position: 'end' },
-            },
-            {
-              xAxis: maxFlowPoint[0],
-              lineStyle: { color: '#FFD700', type: 'dashed' },
-              label: { formatter: `${maxFlowPoint[0].toFixed(0)}辆/10小时`, position: 'end' },
-            },
-          ]
-          : [];
-
-        option = {
-          backgroundColor: 'transparent',
-          grid: { left: 60, right: 40, top: 40, bottom: 60 },
-          tooltip: {
-            trigger: 'item',
-            formatter: function (params) {
-              // Check if params.value exists and is an array
-              if (params.value && Array.isArray(params.value)) {
-                return `流量: ${params.value[0].toFixed(0)}辆/10小时<br/>速度: ${params.value[1].toFixed(2)}km/h`;
-              }
-              return ''; // Return empty string or some default text if value is not as expected
-            },
-          },
-          xAxis: {
-            type: 'value', name: '流量(辆/10小时)', nameLocation: 'middle', nameGap: 30,
-            min: 0, max: 800,
-            splitLine: { lineStyle: { color: '#374151' } }, // Adjusted color for dark theme
-            axisLine: { lineStyle: { color: '#6b7280' } }, // Adjusted color
-            axisLabel: { color: '#d1d5db' } // Label color for dark theme
-          },
-          yAxis: {
-            type: 'value', name: '速度(km/h)', nameLocation: 'middle', nameGap: 40,
-            min: 0, max: 80,
-            splitLine: { lineStyle: { color: '#374151' } }, // Adjusted color
-            axisLine: { lineStyle: { color: '#6b7280' } }, // Adjusted color
-            axisLabel: { color: '#d1d5db' } // Label color
-          },
-          series: [
-            {
-              type: 'scatter',
-              data: scatterData,
-              symbolSize: 8,
-              itemStyle: {
-                color: {
-                  type: 'radial',
-                  x: 0.5, y: 0.5, r: 0.5,
-                  colorStops: [
-                    { offset: 0, color: direction === 'lanzhou' ? '#0183F2' : '#1FD8A9' },
-                    { offset: 1, color: '#4B82B3' }
-                  ],
-                },
-              },
-              markLine: { silent: true, data: markLineData },
-              markArea: {
-                silent: true,
-                itemStyle: { color: 'rgba(0, 156, 255, 0.1)', borderWidth: 1, borderColor: '#009CFF' },
-                data: [[{ name: '亚饱和区域', xAxis: 550, yAxis: 25 }, { xAxis: 800, yAxis: 55 }]]
-              }
-            },
-            {
-              name: '趋势拟合曲线',
-              type: 'line',
-              data: fittedCurve,
-              smooth: true,
-              showSymbol: false,
-              lineStyle: { color: '#f0f', type: 'dashed', width: 2 },
-              tooltip: { show: false },
-            },
-          ],
-        };
-
-        myChart.setOption(option);
-      };
-
-      // --- Main Execution Logic ---
+      // --- 数据准备和图表配置 ---
       const scatterData = generateData();
-      if (scatterData.length >= 3) {
-        const { curve, maxFlowPoint: calculatedMaxFlowPoint, error } = fitQuadratic(scatterData);
-        if (!error) {
-          initChart(scatterData, curve, calculatedMaxFlowPoint);
-        } else {
-          console.error("Failed to fit data or initialize chart:", error);
-          // Optionally display an error message to the user in the chart container
-          chartDom.innerHTML = `<p style='color: red; text-align: center;'>Error initializing chart: ${error}</p>`;
-        }
-      } else {
-        console.error("Not enough data generated to plot.");
-        chartDom.innerHTML = `<p style='color: orange; text-align: center;'>Not enough data to plot.</p>`;
+      const { curve: fittedCurve, maxFlowPoint, error } = fitQuadratic(scatterData);
+
+      if (error) {
+        // 可以选择在页面上显示错误信息
+        chartDom.innerText = '图表生成失败: ' + error;
+        return;
       }
 
-      // --- Resize Listener ---
-      window.addEventListener('resize', myChart.resize);
+      // 假设方向为 'lanzhou'
+      const direction = 'lanzhou';
+
+      /** 计算亚饱和区域 */
+      let subSaturationArea = [];
+      if (maxFlowPoint && scatterData.length > 0) {
+        const pointsInArea = scatterData.filter((point) => point[0] > maxFlowPoint[0]);
+        if (pointsInArea.length > 0) {
+          const initialValue = [[Infinity, Infinity], [-Infinity, -Infinity]];
+          const [min, max] = pointsInArea.reduce(
+            (acc, cur) => [
+              [Math.min(acc[0][0], cur[0]), Math.min(acc[0][1], cur[1])],
+              [Math.max(acc[1][0], cur[0]), Math.max(acc[1][1], cur[1])],
+            ],
+            initialValue
+          );
+          subSaturationArea = [
+            [
+              { name: '亚饱和区域', xAxis: min[0], yAxis: min[1] },
+              { xAxis: max[0], yAxis: max[1] },
+            ],
+          ];
+        }
+      }
+
+      /** 动态设置标线 */
+      const markLineData = maxFlowPoint
+        ? [
+          {
+            yAxis: maxFlowPoint[1],
+            lineStyle: { color: '#ff4d4f', type: 'dashed' },
+            label: { formatter: `${maxFlowPoint[1].toFixed(2)}km/h`, position: 'end' },
+          },
+          {
+            xAxis: maxFlowPoint[0],
+            lineStyle: { color: '#FFD700', type: 'dashed' },
+            label: { formatter: `${maxFlowPoint[0].toFixed(0)}辆/10分钟`, position: 'end' },
+          },
+        ]
+        : [];
+
+      /** 图表选项 */
+      chartOption = {
+        backgroundColor: 'transparent',
+        grid: { top: 40, right: 40, bottom: 60, left: 60 },
+        tooltip: {
+          trigger: 'item',
+          formatter: function (params) {
+            if (params.value && Array.isArray(params.value)) {
+              return `流量: ${params.value[0].toFixed(0)}辆/10分钟<br/>速度: ${params.value[1].toFixed(2)}km/h`;
+            }
+            return '';
+          },
+        },
+        xAxis: {
+          type: 'value', name: '流量(辆/10分钟)', nameLocation: 'middle', nameGap: 30,
+          min: 0, max: 800,
+          splitLine: { lineStyle: { color: '#2d3748' } }, // 调整颜色以适应暗色主题
+          axisLine: { lineStyle: { color: '#4a5568' } },
+          axisLabel: { color: '#cbd5e0' }
+        },
+        yAxis: {
+          type: 'value', name: '速度(km/h)', nameLocation: 'middle', nameGap: 40,
+          min: 0, max: 80,
+          splitLine: { lineStyle: { color: '#2d3748' } },
+          axisLine: { lineStyle: { color: '#4a5568' } },
+          axisLabel: { color: '#cbd5e0' }
+        },
+        series: [
+          {
+            type: 'scatter',
+            data: scatterData,
+            symbolSize: 8,
+            itemStyle: {
+              color: {
+                type: 'radial', x: 0.5, y: 0.5, r: 0.5,
+                colorStops: [
+                  { offset: 0, color: direction === 'lanzhou' ? '#0183F2' : '#1FD8A9' },
+                  { offset: 1, color: '#4B82B3' }
+                ],
+              },
+            },
+            markLine: { silent: true, data: markLineData },
+            markArea: {
+              silent: true,
+              itemStyle: { color: 'rgba(0, 156, 255, 0.1)', borderWidth: 1, borderColor: '#009CFF' },
+              data: subSaturationArea,
+            },
+          },
+          {
+            name: '趋势拟合曲线',
+            type: 'line',
+            data: fittedCurve,
+            smooth: true,
+            showSymbol: false,
+            lineStyle: { color: '#f0f', type: 'dashed', width: 2 },
+            tooltip: { show: false }, // 不在 tooltip 中显示趋势线
+          },
+        ],
+      };
+
+      // 应用配置项
+      chartOption && myChart.setOption(chartOption);
+
+      // 监听窗口大小变化，调整图表大小
+      window.addEventListener('resize', function () {
+        myChart.resize();
+      });
     });
   </script>
 </body>

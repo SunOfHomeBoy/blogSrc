@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scatter Chart with Trend Line</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjs@12.4.2/lib/browser/math.min.js"></script>
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #0f172a;
+      /* Dark background */
+    }
+
+    #chart-container {
+      width: 95%;
+      height: 95%;
+      margin: auto;
+      padding-top: 2.5%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="chart-container"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const chartDom = document.getElementById('chart-container');
+      const myChart = echarts.init(chartDom, 'dark'); // Initialize with dark theme
+      let option;
+
+      // --- Data Generation Logic (from generateData) ---
+      const generateData = () => {
+        const intervalDataList = [
+          { x: 100, y: 75 }, { x: 200, y: 70 }, { x: 300, y: 65 },
+          { x: 400, y: 60 }, { x: 500, y: 55 }, { x: 550, y: 36 },
+          { x: 560, y: 36 }, { x: 580, y: 35 }, { x: 600, y: 35 },
+          { x: 650, y: 45 }, { x: 500, y: 25 }, { x: 400, y: 15 },
+          { x: 300, y: 10 },
+        ];
+        const data = [];
+        intervalDataList.forEach((point) => {
+          for (let i = 0; i < 100; i++) {
+            const randomX = point.x + (Math.random() * 100 - 50);
+            const randomY = point.y + (Math.random() * 20 - 10);
+            if (randomX >= 0 && randomX <= 800 && randomY >= 0 && randomY <= 80) {
+              data.push([randomX, randomY]);
+            }
+          }
+        });
+        return data;
+      };
+
+      // --- Quadratic Fit Logic (from fitQuadratic) ---
+      const fitQuadratic = (dataList) => {
+        if (dataList.length < 3) {
+          console.error('二次函数拟合需要至少 3 个数据点');
+          return { params: {}, curve: [], maxFlowPoint: null, error: 'Insufficient data' };
+        }
+        const xy = [[], []];
+        const [qData, vData] = dataList.reduce(([q, v], [flow, speed]) => [q.concat(flow), v.concat(speed)], xy);
+        const n = vData.length;
+
+        const sumV = vData.reduce((acc, val) => acc + val, 0);
+        const sumV2 = vData.reduce((acc, val) => acc + val ** 2, 0);
+        const sumV3 = vData.reduce((acc, val) => acc + val ** 3, 0);
+        const sumV4 = vData.reduce((acc, val) => acc + val ** 4, 0);
+        const sumQ = qData.reduce((acc, val) => acc + val, 0);
+        const sumVQ = vData.reduce((acc, val, index) => acc + val * qData[index], 0);
+        const sumV2Q = vData.reduce((acc, val, index) => acc + val ** 2 * qData[index], 0);
+
+        const A = math.matrix([
+          [sumV4, sumV3, sumV2],
+          [sumV3, sumV2, sumV],
+          [sumV2, sumV, n],
+        ]);
+        const B = math.matrix([sumV2Q, sumVQ, sumQ]);
+
+        try {
+          if (math.abs(math.det(A)) < 1e-10) { // Check for near-zero determinant
+            throw new Error('系数矩阵接近奇异或不可逆，无法求解唯一解');
+          }
+          const X = math.multiply(math.inv(A), B);
+          const [a, b, c] = X.toArray().map((val) => Number(val.toString().slice(0, 8)));
+
+          const minSpeed = Math.min(...vData);
+          const maxSpeed = Math.max(...vData);
+          const curveData = [];
+          for (let v = minSpeed; v <= maxSpeed; v += 1) {
+            const predictedFlow = a * v ** 2 + b * v + c;
+            if (predictedFlow >= 0) {
+              curveData.push([predictedFlow, v]);
+            }
+          }
+
+          let maxFlowPoint = null;
+          if (curveData.length > 0) {
+            maxFlowPoint = curveData.reduce((maxP, currentP) => (currentP[0] > maxP[0] ? currentP : maxP), curveData[0]);
+          }
+
+          return {
+            params: { a, b, c },
+            curve: curveData,
+            maxFlowPoint: maxFlowPoint,
+            error: null,
+          };
+        } catch (error) {
+          console.error('拟合失败:', error.message);
+          return { params: {}, curve: [], maxFlowPoint: null, error: error.message };
+        }
+      };
+
+      // --- Chart Initialization Logic (adapted from initChart) ---
+      const initChart = (scatterData, fittedCurve, maxFlowPoint) => {
+        const direction = 'lanzhou'; // Default direction
+
+        const markLineData = maxFlowPoint
+          ? [
+            {
+              yAxis: maxFlowPoint[1],
+              lineStyle: { color: '#ff4d4f', type: 'dashed' },
+              label: { formatter: `${maxFlowPoint[1].toFixed(2)}km/h`, position: 'end' },
+            },
+            {
+              xAxis: maxFlowPoint[0],
+              lineStyle: { color: '#FFD700', type: 'dashed' },
+              label: { formatter: `${maxFlowPoint[0].toFixed(0)}辆/10小时`, position: 'end' },
+            },
+          ]
+          : [];
+
+        option = {
+          backgroundColor: 'transparent',
+          grid: { left: 60, right: 40, top: 40, bottom: 60 },
+          tooltip: {
+            trigger: 'item',
+            formatter: function (params) {
+              // Check if params.value exists and is an array
+              if (params.value && Array.isArray(params.value)) {
+                return `流量: ${params.value[0].toFixed(0)}辆/10小时<br/>速度: ${params.value[1].toFixed(2)}km/h`;
+              }
+              return ''; // Return empty string or some default text if value is not as expected
+            },
+          },
+          xAxis: {
+            type: 'value', name: '流量(辆/10小时)', nameLocation: 'middle', nameGap: 30,
+            min: 0, max: 800,
+            splitLine: { lineStyle: { color: '#374151' } }, // Adjusted color for dark theme
+            axisLine: { lineStyle: { color: '#6b7280' } }, // Adjusted color
+            axisLabel: { color: '#d1d5db' } // Label color for dark theme
+          },
+          yAxis: {
+            type: 'value', name: '速度(km/h)', nameLocation: 'middle', nameGap: 40,
+            min: 0, max: 80,
+            splitLine: { lineStyle: { color: '#374151' } }, // Adjusted color
+            axisLine: { lineStyle: { color: '#6b7280' } }, // Adjusted color
+            axisLabel: { color: '#d1d5db' } // Label color
+          },
+          series: [
+            {
+              type: 'scatter',
+              data: scatterData,
+              symbolSize: 8,
+              itemStyle: {
+                color: {
+                  type: 'radial',
+                  x: 0.5, y: 0.5, r: 0.5,
+                  colorStops: [
+                    { offset: 0, color: direction === 'lanzhou' ? '#0183F2' : '#1FD8A9' },
+                    { offset: 1, color: '#4B82B3' }
+                  ],
+                },
+              },
+              markLine: { silent: true, data: markLineData },
+              markArea: {
+                silent: true,
+                itemStyle: { color: 'rgba(0, 156, 255, 0.1)', borderWidth: 1, borderColor: '#009CFF' },
+                data: [[{ name: '亚饱和区域', xAxis: 550, yAxis: 25 }, { xAxis: 800, yAxis: 55 }]]
+              }
+            },
+            {
+              name: '趋势拟合曲线',
+              type: 'line',
+              data: fittedCurve,
+              smooth: true,
+              showSymbol: false,
+              lineStyle: { color: '#f0f', type: 'dashed', width: 2 },
+              tooltip: { show: false },
+            },
+          ],
+        };
+
+        myChart.setOption(option);
+      };
+
+      // --- Main Execution Logic ---
+      const scatterData = generateData();
+      if (scatterData.length >= 3) {
+        const { curve, maxFlowPoint: calculatedMaxFlowPoint, error } = fitQuadratic(scatterData);
+        if (!error) {
+          initChart(scatterData, curve, calculatedMaxFlowPoint);
+        } else {
+          console.error("Failed to fit data or initialize chart:", error);
+          // Optionally display an error message to the user in the chart container
+          chartDom.innerHTML = `<p style='color: red; text-align: center;'>Error initializing chart: ${error}</p>`;
+        }
+      } else {
+        console.error("Not enough data generated to plot.");
+        chartDom.innerHTML = `<p style='color: orange; text-align: center;'>Not enough data to plot.</p>`;
+      }
+
+      // --- Resize Listener ---
+      window.addEventListener('resize', myChart.resize);
+    });
+  </script>
+</body>
+
+</html>

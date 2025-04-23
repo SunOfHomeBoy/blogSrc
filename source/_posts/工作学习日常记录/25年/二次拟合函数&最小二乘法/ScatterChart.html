@@ -37,7 +37,6 @@
     document.addEventListener('DOMContentLoaded', function () {
       const chartDom = document.getElementById('chart');
       const myChart = echarts.init(chartDom, 'dark'); // 使用暗色主题
-      let chartOption;
 
       // --- 从 React 组件移植的函数 ---
 
@@ -142,7 +141,7 @@
           ]
           : [];
 
-        option = {
+        const option = {
           backgroundColor: 'transparent',
           grid: { left: 60, right: 40, top: 40, bottom: 60 },
           tooltip: {

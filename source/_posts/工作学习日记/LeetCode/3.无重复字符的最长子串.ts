@@ -2,11 +2,11 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function (s) {
+function lengthOfLongestSubstring(s) {
   /* 非空校验 */
-  if (s.length == 0) return 0;
+  if (s.length === 0) return 0;
   /* map对象 缓存 字符串出现位置 */
-  let map = {} // new HashMap<Character, Integer>();
+  let map = {}
   /* 记录最大长度 */
   let max = 0;
   /* 记录当前窗口的起始位置 */

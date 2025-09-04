@@ -1,0 +1,44 @@
+{
+    "_type": "chat",
+    "output_parser": null,
+    "input_variables": [
+        "agent_scratchpad",
+        "input",
+        "tool_names",
+        "tools"
+    ],
+    "partial_variables": {
+        "chat_history": []
+    },
+    "optional_variables": [
+        "chat_history"
+    ],
+    "metadata": {
+        "lc_hub_owner": "hwchase17",
+        "lc_hub_repo": "structured-chat-agent",
+        "lc_hub_commit_hash": "ea510f70a5872eb0f41a4e3b7bb004d5711dc127adee08329c664c6c8be5f13c"
+    },
+    "validate_template": false,
+    "lc_attributes": {
+        "input_variables": [
+            "agent_scratchpad",
+            "input",
+            "tool_names",
+            "tools"
+        ]
+    },
+    "messages": [
+        {
+            "type": "system",
+            "content": "Respond to the human as helpfully and accurately as possible. You have access to the following tools:{tools}\\n\\nUse a json blob to specify a tool by providing an action key (tool name) and an action_input key (tool input).\\n\\nValid \"action\" values: Final Answer or {tool_names}\\n\\nProvide only ONE action per $JSON_BLOB, as shown:\\n\\n```\\n{{\\n  \"action\": $TOOL_NAME,\\n  \"action_input\": $INPUT\\n}}\\n```\\n请严格按照以下JSON格式输出，不要包含其他内容：\\n{\\n  \"action\": \"工具名称\",\\n  \"action_input\": \"工具输入\"\\n}\\n如果不需要调用工具，请直接返回：\\n{\\n  \"action\": \"Final Answer\",\\n  \"action_input\": \"最终答案\"\\n最终答案一定是字符串形式，如果数据是不带 \"action\" 字段的json格式，请帮我整理成中文自然语言}"
+        },
+        {
+            "placeholder": "chat_history",
+            "optional": true
+        },
+        {
+            "type": "human",
+            "content": "{input}\n\n{agent_scratchpad}\n(Return the result of a function call directly, without explaining code logic or redundancy)"
+        }
+    ]
+}

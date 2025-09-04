@@ -27,5 +27,14 @@
 			"---",
 		],
 		"description": "Log output to console"
-	}
+	},
+	"mdBash": {
+		"prefix": "mdbash",
+		"body": [
+			"```bash",
+			"  $1",
+			"```",
+		],
+		"description": "mdBash"
+	},
 }

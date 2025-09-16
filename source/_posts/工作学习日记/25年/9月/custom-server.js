@@ -4,6 +4,10 @@ const path = require('path');
 const url = require('url');
 
 let parsedUrl
+// 创建缓存来存储已获取的页面数据
+const pageCache = new Map();
+const CACHE_LIMIT = 10; // 缓存最大条目数
+
 // 创建代理服务器，监听 p1 端口
 const proxy = http.createServer((req, res) => {
   parsedUrl = url.parse(req.url);
@@ -84,8 +88,51 @@ function handleImageApi(req, res) {
   const page = parseInt(query.page) || 1;
   const limit = parseInt(query.limit) || 50; // 默认每页50张图片
 
+  // 生成缓存键
+  const cacheKey = `${path}_${page}_${limit}`;
+
+  // 检查缓存中是否已有数据
+  if (pageCache.has(cacheKey)) {
+    const cachedData = pageCache.get(cacheKey);
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(cachedData));
+    return;
+  }
+
   // 从代理服务器获取数据
   const targetUrl = `http://localhost:${PROXY_PORT}${path}`;
+
+  // 检查是否缓存了该路径的完整数据
+  if (pageCache.has(path)) {
+    // 如果已有完整数据，直接使用
+    const fullData = pageCache.get(path);
+    const start = (page - 1) * limit;
+    const end = start + limit;
+    const paginatedImages = fullData.images.slice(start, end);
+
+    // 重新计算总页数，基于当前的 limit
+    const totalPages = Math.ceil(fullData.totalImages / limit);
+
+    const result = {
+      images: paginatedImages,
+      currentPage: page,
+      totalPages: totalPages,
+      totalImages: fullData.totalImages
+    };
+
+    // 缓存分页结果
+    if (pageCache.size >= CACHE_LIMIT) {
+      // 删除最旧的缓存项
+      const firstKey = pageCache.keys().next().value;
+      pageCache.delete(firstKey);
+    }
+    pageCache.set(cacheKey, result);
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(result));
+    return;
+  }
+
   http.get(targetUrl, (proxyRes) => {
     let body = '';
     proxyRes.setEncoding('utf8');
@@ -97,19 +144,50 @@ function handleImageApi(req, res) {
     proxyRes.on('end', () => {
       if (proxyRes.headers['content-type'] && proxyRes.headers['content-type'].includes('text/html')) {
         // 提取图片链接
-        const images = extractImages(body);
+        const images = extractImagesOptimized(body);
+        // 计算总页数，基于当前的 limit
+        const totalPages = Math.ceil(images.length / limit);
+
+        // 存储完整数据到缓存
+        const fullData = {
+          images: images,
+          totalPages: totalPages,
+          totalImages: images.length
+        };
+
+        // 管理缓存大小
+        if (pageCache.size >= CACHE_LIMIT) {
+          // 删除最旧的缓存项
+          const firstKey = pageCache.keys().next().value;
+          pageCache.delete(firstKey);
+        }
+        pageCache.set(path, fullData);
+
         // 分页处理
         const start = (page - 1) * limit;
         const end = start + limit;
         const paginatedImages = images.slice(start, end);
 
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({
+        // 重新计算总页数，基于当前的 limit
+        const resultTotalPages = Math.ceil(images.length / limit);
+
+        const result = {
           images: paginatedImages,
           currentPage: page,
-          totalPages: Math.ceil(images.length / limit),
+          totalPages: resultTotalPages,
           totalImages: images.length
-        }));
+        };
+
+        // 缓存分页结果
+        if (pageCache.size >= CACHE_LIMIT) {
+          // 删除最旧的缓存项
+          const firstKey = pageCache.keys().next().value;
+          pageCache.delete(firstKey);
+        }
+        pageCache.set(cacheKey, result);
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(result));
       } else {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'Not a directory page' }));
@@ -121,10 +199,11 @@ function handleImageApi(req, res) {
   });
 }
 
-// 从HTML中提取图片链接
-function extractImages(html) {
+// 优化的图片提取方法，使用更高效的正则表达式处理
+function extractImagesOptimized(html) {
   const images = [];
-  const regex = /<li><a\s+href="([^"]+\.jpg|[^"]+\.png|[^"]+\.JPG|[^"]+\.PNG)"[^>]*>([^<]+)<\/a><\/li>/gi;
+  // 使用更高效的正则表达式，减少回溯
+  const regex = /<li>\s*<a\s+href="([^"]+\.(?:jpe?g|png|JPE?G|PNG))"[^>]*>([^<]+)<\/a>\s*<\/li>/g;
   let match;
 
   while ((match = regex.exec(html)) !== null) {

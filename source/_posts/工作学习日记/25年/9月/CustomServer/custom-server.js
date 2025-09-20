@@ -54,6 +54,11 @@ const proxy = http.createServer((req, res) => {
     proxyRes.on('end', () => {
       // 如果是 HTML 内容，处理 a 标签中的 jpg/png
       if (proxyRes.headers['content-type'] && proxyRes.headers['content-type'].includes('text/html')) {
+        /* 匹配 a 标签中的 jpg/png */
+        if (!body.includes('.jpg') && !body.includes('.png') && !body.includes('.jpeg')) {
+          return res.end(body);
+        }
+
         const modifiedBody = transformHtml(body, parsedUrl.path);
         // 删除 Content-Length 头部，避免长度不匹配问题
         delete proxyRes.headers['content-length'];
@@ -218,6 +223,10 @@ function extractImagesOptimized(html) {
 
 // 将 a 标签中的 jpg/png 替换为 img 标签
 function transformHtml(html, path) {
+  // const htmlBackup = String(html);
+  // 创建一个 ul 备份的变量
+  const ulBackup = String(html.match(/<ul>[\s\S]*?<\/ul>/).join().replace(/\n/g, ''));
+
   // 移除原有的图片列表
   const modifiedHtml = html.replace(/<ul>[\s\S]*?<\/ul>/, '<div id="image-container"></div><div id="pagination-container"></div>');
 
@@ -285,7 +294,7 @@ function transformHtml(html, path) {
         container.innerHTML = '';
 
         if (images.length === 0) {
-          container.innerHTML = '<div style="text-align: center; width: 100%;">该目录下没有图片</div>';
+          container.innerHTML = '${ulBackup}';
           return;
         }
 
